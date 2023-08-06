@@ -1,0 +1,14 @@
+.component_blocks {
+  background-color: aliceblue;
+}
+
+.tabBlock {
+  width: 500px;
+  height: 200px;
+  background-color: gray;
+}
+
+.componentEx {
+  width: 100px;
+  background-color: aqua;
+}

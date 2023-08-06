@@ -1,0 +1,50 @@
+.diary_page {
+  display: flex;
+  flex-direction: column;
+  width: 500px; /*80vw;*/
+  height: 707px; /*141vw;*/
+  background-color: white;
+  padding: 10px;
+  /* display: grid;
+  place-items: center; */
+}
+
+.diary_page_div {
+  width: 100%;
+  height: fit-content;
+}
+
+@media print {
+  .diary_page {
+    width: 210mm;
+    height: 297mm;
+  }
+}
+
+html {
+  background-color: black;
+}
+
+.title {
+  color: #ffffff;
+}
+
+.btn {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+}
+
+.btn_group {
+  width: 500px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
