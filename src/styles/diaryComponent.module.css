@@ -1,4 +1,4 @@
-.diaryComponents:focus {
+.diaryComponents:focus-within {
   box-sizing: border-box;
   border: 2px solid rgb(111, 0, 255);
 }

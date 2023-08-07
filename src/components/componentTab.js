@@ -105,8 +105,8 @@ function ComponentTab() {
   const [tabState, setTabState] = useState("tab1");
   const tabContent = {
     tab1: (
-      <div className={styles.component_blocks}>
-        Tab 1 Content
+      <div>
+        <h4>Tab 1 Content</h4>
         <ChecklistCreator />
         <DotgridCreator />
         <GridCreator />
@@ -116,11 +116,47 @@ function ComponentTab() {
       </div>
     ),
     tab2: (
-      <div className={styles.component_blocks}>
-        Tab 2 Content
+      <div>
+        <h4>Tab 2 Content</h4>
         <div>테두리 그리기</div>
+        <div>
+          <input
+            type="radio"
+            id="contactChoice1"
+            name="contact"
+            value="email"
+          />
+          <label for="contactChoice1">Email</label>
+
+          <input
+            type="radio"
+            id="contactChoice2"
+            name="contact"
+            value="phone"
+          />
+          <label for="contactChoice2">Phone</label>
+
+          <input type="radio" id="contactChoice3" name="contact" value="mail" />
+          <label for="contactChoice3">Mail</label>
+        </div>
         <div>타공자리 확보 side-space</div>
+        <input type="checkbox" id="horns" name="horns" />
+        <label for="horns">Horns</label>
+        <input
+          type="number"
+          id="tentacles"
+          name="tentacles"
+          min="10"
+          max="100"
+        />
         <div>가장자리 간격 allside-space</div>
+        <input
+          type="number"
+          id="tentacles"
+          name="tentacles"
+          min="10"
+          max="100"
+        />
       </div>
     ),
     // tab3: <div className={styles.component_blocks}>Tab 3 Content</div>,

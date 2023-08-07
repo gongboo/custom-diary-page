@@ -1,4 +1,8 @@
 .component_blocks {
+  float: left;
+  margin: 10px;
+  border: solid;
+  padding: 10px;
   background-color: aliceblue;
 }
 

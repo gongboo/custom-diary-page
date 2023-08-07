@@ -11,10 +11,6 @@ const TextComponent = () => {
     }),
   }));
 
-  const onClick = () => {
-    //border를 만든다
-  };
-
   return (
     <div
       ref={drag}
@@ -27,7 +23,12 @@ const TextComponent = () => {
       <input
         type="text"
         placeholder="click and insert text"
-        style={{ border: "none", width: "100%" }}
+        style={{
+          border: "none",
+          width: "100%",
+          border: "none",
+          outline: "none",
+        }}
       />
     </div>
   );
