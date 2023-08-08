@@ -2,14 +2,10 @@ import React, { useState } from "react";
 import { ItemTypes } from "../../constants/itemTypes";
 import { useDrag } from "react-dnd";
 import styles from "../../styles/diaryComponent.module.css";
+import { useDraggable } from "./useDraggable";
 
 const ChecklistComponent = () => {
-  const [{ isDragging }, drag] = useDrag(() => ({
-    type: ItemTypes.CARD, //추후 수정
-    collect: (monitor) => ({
-      isDragging: !!monitor.isDragging(),
-    }),
-  }));
+  const { isDragging, drag } = useDraggable();
 
   return (
     <div
