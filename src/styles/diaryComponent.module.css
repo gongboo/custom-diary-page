@@ -2,3 +2,13 @@
   box-sizing: border-box;
   border: 2px solid rgb(111, 0, 255);
 }
+
+.tableRow {
+  box-sizing: border-box;
+  border: 2px solid black;
+}
+
+.tableCol {
+  border: 1px solid;
+  padding: 10px 5px;
+}

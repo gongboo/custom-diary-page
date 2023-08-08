@@ -5,14 +5,19 @@ import { useDrag } from "react-dnd";
 
 //탭에 들어가는 것은 ~Creator로 통일
 
-function LineCreator() {
+function useDraggable(itemName) {
   const [{ isDragging }, drag] = useDrag(() => ({
     type: ItemTypes.CARD,
-    item: { name: "line" },
+    item: { name: itemName },
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging(),
     }),
   }));
+  return { isDragging, drag };
+}
+
+function LineCreator() {
+  const { isDragging, drag } = useDraggable("line");
 
   return (
     <div ref={drag} className={styles.component_blocks}>
@@ -22,14 +27,7 @@ function LineCreator() {
 }
 
 function SquareCreator() {
-  const [{ isDragging }, drag] = useDrag(() => ({
-    type: ItemTypes.CARD,
-    item: { name: "square" },
-    collect: (monitor) => ({
-      isDragging: !!monitor.isDragging(),
-    }),
-  }));
-
+  const { isDragging, drag } = useDraggable("square");
   return (
     <div ref={drag} className={styles.component_blocks}>
       <div>square</div>
@@ -38,13 +36,7 @@ function SquareCreator() {
 }
 
 function TextCreator() {
-  const [{ isDragging }, drag] = useDrag(() => ({
-    type: ItemTypes.CARD,
-    item: { name: "text" },
-    collect: (monitor) => ({
-      isDragging: !!monitor.isDragging(),
-    }),
-  }));
+  const { isDragging, drag } = useDraggable("text");
 
   return (
     <div ref={drag} className={styles.component_blocks}>
@@ -54,13 +46,7 @@ function TextCreator() {
 }
 
 function ChecklistCreator() {
-  const [{ isDragging }, drag] = useDrag(() => ({
-    type: ItemTypes.CARD,
-    item: { name: "checklist" },
-    collect: (monitor) => ({
-      isDragging: !!monitor.isDragging(),
-    }),
-  }));
+  const { isDragging, drag } = useDraggable("checklist");
 
   return (
     <div ref={drag} className={styles.component_blocks}>
@@ -70,13 +56,7 @@ function ChecklistCreator() {
 }
 
 function GridCreator() {
-  const [{ isDragging }, drag] = useDrag(() => ({
-    type: ItemTypes.CARD,
-    item: { name: "grid" },
-    collect: (monitor) => ({
-      isDragging: !!monitor.isDragging(),
-    }),
-  }));
+  const { isDragging, drag } = useDraggable("grid");
 
   return (
     <div ref={drag} className={styles.component_blocks}>
@@ -86,17 +66,71 @@ function GridCreator() {
 }
 
 function DotgridCreator() {
-  const [{ isDragging }, drag] = useDrag(() => ({
-    type: ItemTypes.CARD,
-    item: { name: "dotgrid" },
-    collect: (monitor) => ({
-      isDragging: !!monitor.isDragging(),
-    }),
-  }));
+  const { isDragging, drag } = useDraggable("dotgrid");
 
   return (
     <div ref={drag} className={styles.component_blocks}>
       <div>dotgrid</div>
+    </div>
+  );
+}
+
+function MonthTableCreator() {
+  const { isDragging, drag } = useDraggable("monthTable");
+
+  return (
+    <div ref={drag} className={styles.component_blocks}>
+      <div>monthTable</div>
+    </div>
+  );
+}
+
+function PictureDiaryCreator() {
+  const { isDragging, drag } = useDraggable("pictureDiary");
+
+  return (
+    <div ref={drag} className={styles.component_blocks}>
+      <div>pictureDiary</div>
+    </div>
+  );
+}
+
+function ProgressBarCreator() {
+  const { isDragging, drag } = useDraggable("progressBar");
+
+  return (
+    <div ref={drag} className={styles.component_blocks}>
+      <div>progressBar</div>
+    </div>
+  );
+}
+
+function CounterCreator() {
+  const { isDragging, drag } = useDraggable("counter");
+
+  return (
+    <div ref={drag} className={styles.component_blocks}>
+      <div>counter</div>
+    </div>
+  );
+}
+
+function CircularDailyCreator() {
+  const { isDragging, drag } = useDraggable("circularDaily");
+
+  return (
+    <div ref={drag} className={styles.component_blocks}>
+      <div>circularDaily</div>
+    </div>
+  );
+}
+
+function DoubleCircularDailyCreator() {
+  const { isDragging, drag } = useDraggable("doublecircularDaily");
+
+  return (
+    <div ref={drag} className={styles.component_blocks}>
+      <div>doublecircularDaily</div>
     </div>
   );
 }
@@ -106,7 +140,6 @@ function ComponentTab() {
   const tabContent = {
     tab1: (
       <div>
-        <h4>Tab 1 Content</h4>
         <ChecklistCreator />
         <DotgridCreator />
         <GridCreator />
@@ -117,43 +150,60 @@ function ComponentTab() {
     ),
     tab2: (
       <div>
-        <h4>Tab 2 Content</h4>
+        <MonthTableCreator />
+        <PictureDiaryCreator />
+        {/* <ProgressBarCreator /> */}
+
+        <CounterCreator />
+        <CircularDailyCreator />
+        <DoubleCircularDailyCreator />
+      </div>
+    ),
+    tab3: (
+      <div>
         <div>테두리 그리기</div>
         <div>
           <input
             type="radio"
-            id="contactChoice1"
-            name="contact"
-            value="email"
+            id="pageBorderChoice1"
+            name="pageBorder"
+            value="1"
           />
-          <label for="contactChoice1">Email</label>
+          <label for="pageBorderChoice1">테두리1</label>
 
           <input
             type="radio"
-            id="contactChoice2"
-            name="contact"
-            value="phone"
+            id="pageBorderChoice2"
+            name="pageBorder"
+            value="2"
           />
-          <label for="contactChoice2">Phone</label>
+          <label for="pageBorderChoice2">테두리2</label>
 
-          <input type="radio" id="contactChoice3" name="contact" value="mail" />
-          <label for="contactChoice3">Mail</label>
+          <input
+            type="radio"
+            id="pageBorderChoice3"
+            name="pageBorder"
+            value="3"
+          />
+          <label for="pageBorderChoice3">테두리3</label>
         </div>
+
         <div>타공자리 확보 side-space</div>
-        <input type="checkbox" id="horns" name="horns" />
-        <label for="horns">Horns</label>
+        <input type="checkbox" id="sideHoleSpace" name="sideHoleSpace" />
+        <label for="sideHoleSpace">타공 간격</label>
         <input
           type="number"
-          id="tentacles"
-          name="tentacles"
+          id="sideHoleSpace"
+          name="sideHoleSpace"
           min="10"
           max="100"
         />
+
         <div>가장자리 간격 allside-space</div>
         <input
           type="number"
-          id="tentacles"
-          name="tentacles"
+          id="pagePadding"
+          name="pagePadding"
           min="10"
           max="100"
         />
@@ -166,7 +216,7 @@ function ComponentTab() {
     <div className={styles.tabBlock}>
       <button onClick={() => setTabState("tab1")}>tab1</button>
       <button onClick={() => setTabState("tab2")}>tab2</button>
-      {/* <button onClick={() => setTabState("tab3")}>tab3</button> */}
+      <button onClick={() => setTabState("tab3")}>tab3</button>
       {tabContent[tabState]}
     </div>
   );

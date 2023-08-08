@@ -9,6 +9,13 @@ import DotgridComponent from "./diary-components/dotgridComponent";
 import GridComponent from "./diary-components/gridComponent";
 import TextComponent from "./diary-components/textComponent";
 import ChecklistComponent from "./diary-components/checklistComponent";
+import CircularDailyComponent from "./diary-components/circularDailyComponent";
+import DoubleCircularDailyComponent from "./diary-components/doubleCircularDailyComponent";
+
+import MonthTableComponent from "./diary-components/monthTableComponent";
+import PictureDailyComponent from "./diary-components/pictureDailyComponent";
+import ProgressComponent from "./diary-components/progressComponent";
+import CounterComponent from "./diary-components/counterComponent";
 
 const ComponentToPrint = React.forwardRef((props, ref) => {
   const [{ isOver }, drop] = useDrop({
@@ -33,6 +40,12 @@ const ComponentToPrint = React.forwardRef((props, ref) => {
       checklist: <ChecklistComponent />,
       grid: <GridComponent />,
       dotgrid: <DotgridComponent />,
+      circularDaily: <CircularDailyComponent />,
+      doublecircularDaily: <DoubleCircularDailyComponent />,
+      monthTable: <MonthTableComponent />,
+      pictureDiary: <PictureDailyComponent />,
+      progressBar: <ProgressComponent />,
+      counter: <CounterComponent />,
     };
 
     return componentMap[str];
