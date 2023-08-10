@@ -3,10 +3,17 @@ import { ItemTypes } from "../../constants/itemTypes";
 import { useDrag } from "react-dnd";
 import styles from "../../styles/diaryComponent.module.css";
 import { useDraggable } from "./useDraggable";
+import { useNumAttributeAdjuster, useFocus } from "./adjustmentHooks";
+import DiaryComponent from "./diaryComponent";
+import AdjustmentBar from "./adjustmentBar";
 
 const CircularDailyComponent = () => {
   const { isDragging, drag } = useDraggable();
   const [circleWidth, setCircleWidth] = useState(300);
+  const [isFocused, setIsFocused, handleBlur] = useFocus();
+  const [height, increaseHeight, decreaseHeight] = useNumAttributeAdjuster();
+  const [colorLightness, increaseColorLightness, decreaseColorLightness] =
+    useNumAttributeAdjuster();
 
   const scaleMark = () => {
     const numberOfItems = 24;
@@ -36,40 +43,53 @@ const CircularDailyComponent = () => {
   };
 
   return (
-    <div
-      ref={drag}
-      tabIndex="0"
-      className={styles.diaryComponents}
-      style={{
-        width: "100%",
-      }}
+    <DiaryComponent
+      drag={drag}
+      setIsFocused={setIsFocused}
+      handleBlur={handleBlur}
     >
       <div
         style={{
-          position: "relative",
-          height: circleWidth,
-          width: circleWidth,
-          borderRadius: "50%",
-          border: "solid",
-          display: "inline-block",
+          width: "100%",
         }}
       >
-        {scaleMark()}
         <div
           style={{
-            position: "absolute",
-            height: "3px",
-            width: "3px",
-            bottom: "50%",
-            left: "50%",
+            position: "relative",
+            height: circleWidth,
+            width: circleWidth,
             borderRadius: "50%",
             border: "solid",
-            backgroundColor: "black",
-            transform: "translate(-50%, -50%)",
+            display: "inline-block",
           }}
-        ></div>
-      </div>
-    </div>
+        >
+          {scaleMark()}
+          <div
+            style={{
+              position: "absolute",
+              height: "3px",
+              width: "3px",
+              bottom: "50%",
+              left: "50%",
+              borderRadius: "50%",
+              border: "solid",
+              backgroundColor: "black",
+              transform: "translate(-50%, -50%)",
+            }}
+          ></div>
+        </div>
+      </div>{" "}
+      {isFocused && (
+        <AdjustmentBar>
+          <button onMouseDown={increaseHeight}>+</button>
+          높이
+          <button onMouseDown={decreaseHeight}>-</button>
+          <button onMouseDown={increaseColorLightness}>+</button>
+          색깔
+          <button onMouseDown={decreaseColorLightness}>-</button>
+        </AdjustmentBar>
+      )}
+    </DiaryComponent>
   );
 };
 

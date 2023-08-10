@@ -3,30 +3,55 @@ import { ItemTypes } from "../../constants/itemTypes";
 import { useDrag } from "react-dnd";
 import styles from "../../styles/diaryComponent.module.css";
 import { useDraggable } from "./useDraggable";
+import { useNumAttributeAdjuster, useFocus } from "./adjustmentHooks";
+import DiaryComponent from "./diaryComponent";
+import AdjustmentBar from "./adjustmentBar";
 
 const TextComponent = () => {
   const { isDragging, drag } = useDraggable();
+  const [isFocused, setIsFocused, handleBlur] = useFocus();
+  const [colorLineThickness, setColorLineThickness] = useState(50);
+
+  const [size, increaseSize, decreaseSize] = useNumAttributeAdjuster();
+  const [colorLightness, increaseColorLightness, decreaseColorLightness] =
+    useNumAttributeAdjuster();
+  const color = "hsl(0,0%," + colorLightness + "%)";
 
   return (
-    <div
-      ref={drag}
-      tabIndex="0"
-      className={styles.diaryComponents}
-      style={{
-        width: "100%",
-      }}
+    <DiaryComponent
+      drag={drag}
+      setIsFocused={setIsFocused}
+      handleBlur={handleBlur}
     >
-      <input
-        type="text"
-        placeholder="click and insert text"
+      <div
         style={{
-          border: "none",
           width: "100%",
-          border: "none",
-          outline: "none",
         }}
-      />
-    </div>
+      >
+        <input
+          type="text"
+          placeholder="click and insert text"
+          style={{
+            border: "none",
+            width: "100%",
+            border: "none",
+            outline: "none",
+            font: size + "px 'Fira Sans', sans-serif",
+            color: color,
+          }}
+        />
+      </div>{" "}
+      {isFocused && (
+        <AdjustmentBar>
+          <button onMouseDown={increaseSize}>+</button>
+          높이
+          <button onMouseDown={decreaseSize}>-</button>
+          <button onMouseDown={increaseColorLightness}>+</button>
+          색깔
+          <button onMouseDown={decreaseColorLightness}>-</button>
+        </AdjustmentBar>
+      )}
+    </DiaryComponent>
   );
 };
 

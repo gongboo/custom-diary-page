@@ -3,20 +3,30 @@ import { ItemTypes } from "../../constants/itemTypes";
 import { useDrag } from "react-dnd";
 import styles from "../../styles/diaryComponent.module.css";
 import { useDraggable } from "./useDraggable";
+import { useNumAttributeAdjuster, useFocus } from "./adjustmentHooks";
+import DiaryComponent from "./diaryComponent";
+import AdjustmentBar from "./adjustmentBar";
 
 const CounterComponent = () => {
   const { isDragging, drag } = useDraggable();
+  const [isFocused, setIsFocused, handleBlur] = useFocus();
+  const [colorLineThickness, setColorLineThickness] = useState(50);
 
-  const [number, setNumber] = useState(20);
+  const [countNum, increaseCountNum, decreaseCountNum] =
+    useNumAttributeAdjuster(20, 1);
+  const [colorLightness, increaseColorLightness, decreaseColorLightness] =
+    useNumAttributeAdjuster();
+
+  const color = "hsl(0,0%," + colorLightness + "%)";
+
   const oneParticle = (num) => {
     return (
       <div
         style={{
-          border: "solid",
-          //float: "left",
+          border: "solid " + color,
           padding: "5px",
-
           width: "20px",
+          color: color,
         }}
       >
         {num}
@@ -25,18 +35,31 @@ const CounterComponent = () => {
   };
 
   return (
-    <div
-      ref={drag}
-      tabIndex="0"
-      className={styles.diaryComponents}
-      style={{
-        display: "flex",
-        flexWrap: "wrap",
-        justifyContent: "center", //"space-between", //"center",
-      }}
+    <DiaryComponent
+      drag={drag}
+      setIsFocused={setIsFocused}
+      handleBlur={handleBlur}
     >
-      {Array.from({ length: number }).map((_, i) => oneParticle(i + 1))}
-    </div>
+      <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "center", //"space-between", //"center",
+        }}
+      >
+        {Array.from({ length: countNum }).map((_, i) => oneParticle(i + 1))}
+      </div>
+      {isFocused && (
+        <AdjustmentBar>
+          <button onMouseDown={increaseCountNum}>+</button>
+          갯수
+          <button onMouseDown={decreaseCountNum}>-</button>
+          <button onMouseDown={increaseColorLightness}>+</button>
+          색깔
+          <button onMouseDown={decreaseColorLightness}>-</button>
+        </AdjustmentBar>
+      )}
+    </DiaryComponent>
   );
 };
 

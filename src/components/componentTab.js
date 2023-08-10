@@ -135,12 +135,11 @@ function DoubleCircularDailyCreator() {
   );
 }
 
-function ComponentTab() {
+function ComponentTab(props) {
   const [tabState, setTabState] = useState("tab1");
   const tabContent = {
     tab1: (
       <div>
-        <ChecklistCreator />
         <DotgridCreator />
         <GridCreator />
         <LineCreator />
@@ -153,7 +152,7 @@ function ComponentTab() {
         <MonthTableCreator />
         <PictureDiaryCreator />
         {/* <ProgressBarCreator /> */}
-
+        <ChecklistCreator />
         <CounterCreator />
         <CircularDailyCreator />
         <DoubleCircularDailyCreator />
@@ -214,9 +213,24 @@ function ComponentTab() {
 
   return (
     <div className={styles.tabBlock}>
-      <button onClick={() => setTabState("tab1")}>tab1</button>
-      <button onClick={() => setTabState("tab2")}>tab2</button>
-      <button onClick={() => setTabState("tab3")}>tab3</button>
+      <button
+        onClick={() => setTabState("tab1")}
+        style={tabState === "tab1" ? { background: "red" } : {}}
+      >
+        simple
+      </button>
+      <button
+        onClick={() => setTabState("tab2")}
+        style={tabState === "tab2" ? { background: "red" } : {}}
+      >
+        complex
+      </button>
+      <button
+        onClick={() => setTabState("tab3")}
+        style={tabState === "tab3" ? { background: "red" } : {}}
+      >
+        page setting
+      </button>
       {tabContent[tabState]}
     </div>
   );

@@ -3,11 +3,32 @@ import { ItemTypes } from "../../constants/itemTypes";
 import { useDrag } from "react-dnd";
 import styles from "../../styles/diaryComponent.module.css";
 import { useDraggable } from "./useDraggable";
+import { useNumAttributeAdjuster, useFocus } from "./adjustmentHooks";
+import DiaryComponent from "./diaryComponent";
+import AdjustmentBar from "./adjustmentBar";
 
 const PictureDailyComponent = () => {
   const { isDragging, drag } = useDraggable();
 
   const [wordBlockWidth, setWordBlockWidth] = useState(50);
+  const [isFocused, setIsFocused, handleBlur] = useFocus();
+  const [colorLineThickness, setColorLineThickness] = useState(50);
+
+  const [height, increaseHeight, decreaseHeight] = useNumAttributeAdjuster(
+    50,
+    5
+  );
+  const [colorLightness, increaseColorLightness, decreaseColorLightness] =
+    useNumAttributeAdjuster();
+  const color = "hsl(0,0%," + colorLightness + "%)";
+  const [rowNum, increaseRowNum, decreaseRowNum] = useNumAttributeAdjuster(
+    4,
+    1
+  );
+  const [colNum, increaseColNum, decreaseColNum] = useNumAttributeAdjuster(
+    5,
+    1
+  );
 
   const wordBlocks = (rowNum, ColNum) => {
     const widgets = [];
@@ -18,7 +39,7 @@ const PictureDailyComponent = () => {
           style={{
             width: wordBlockWidth + "px",
             height: wordBlockWidth + "px",
-            border: "solid",
+            border: "solid " + color,
           }}
         ></td>
       );
@@ -27,22 +48,45 @@ const PictureDailyComponent = () => {
     for (let i = 0; i < rowNum; i++) {
       widget_total.push(<tr>{widgets}</tr>);
     }
-    return <table style={{ borderCollapse: "collapse" }}>{widget_total}</table>;
+    return (
+      <table style={{ borderCollapse: "collapse", width: "100%" }}>
+        {widget_total}
+      </table>
+    );
   };
 
   return (
-    <div
-      ref={drag}
-      tabIndex="0"
-      className={styles.diaryComponents}
-      style={{
-        width: "100%",
-      }}
+    <DiaryComponent
+      drag={drag}
+      setIsFocused={setIsFocused}
+      handleBlur={handleBlur}
     >
-      <div style={{ border: "solid", height: "50px" }}></div>
+      <div
+        style={{
+          width: "100%",
+        }}
+      >
+        <div style={{ border: "solid " + color, height: height + "px" }}></div>
 
-      {wordBlocks(4, 10)}
-    </div>
+        {wordBlocks(rowNum, colNum)}
+      </div>
+      {isFocused && (
+        <AdjustmentBar>
+          <button onMouseDown={increaseHeight}>+</button>
+          높이
+          <button onMouseDown={decreaseHeight}>-</button>
+          <button onMouseDown={increaseColorLightness}>+</button>
+          색깔
+          <button onMouseDown={decreaseColorLightness}>-</button>
+          <button onMouseDown={increaseRowNum}>+</button>
+          가로
+          <button onMouseDown={decreaseRowNum}>-</button>
+          <button onMouseDown={increaseColNum}>+</button>
+          세로
+          <button onMouseDown={decreaseColNum}>-</button>
+        </AdjustmentBar>
+      )}
+    </DiaryComponent>
   );
 };
 
