@@ -1,21 +1,21 @@
-import styles from "../styles/app.module.css";
+import styles from "./styles/DiaryPage.module.css";
 import React, { useState } from "react";
-import { ItemTypes } from "../constants/itemTypes";
+import { ItemTypes } from "../Constants/itemTypes";
 import { useDrop } from "react-dnd";
 
-import LineComponent from "./diary-components/lineComponent";
-import BoxComponent from "./diary-components/boxComponent";
-import DotgridComponent from "./diary-components/dotgridComponent";
-import GridComponent from "./diary-components/gridComponent";
-import TextComponent from "./diary-components/textComponent";
-import ChecklistComponent from "./diary-components/checklistComponent";
-import CircularDailyComponent from "./diary-components/circularDailyComponent";
-import DoubleCircularDailyComponent from "./diary-components/doubleCircularDailyComponent";
+import LineComponent from "../Blocks/SimpleBlocks/LineBlock";
+import BoxComponent from "../Blocks/SimpleBlocks/SquareBlock";
+import DotgridComponent from "../Blocks/SimpleBlocks/DotgridBlock";
+import GridComponent from "../Blocks/SimpleBlocks/GridBlock";
+import TextComponent from "../Blocks/SimpleBlocks/TextBlock";
+import ChecklistComponent from "../Blocks/ComplexBlocks/ChecklistBlock";
+import CircularDailyComponent from "../Blocks/ComplexBlocks/CircularDailyBlock";
+import DoubleCircularDailyComponent from "../Blocks/ComplexBlocks/DoubleCircularDailyBlock";
 
-import MonthTableComponent from "./diary-components/monthTableComponent";
-import PictureDailyComponent from "./diary-components/pictureDailyComponent";
-import ProgressComponent from "./diary-components/progressComponent";
-import CounterComponent from "./diary-components/counterComponent";
+import MonthTableComponent from "../Blocks/ComplexBlocks/MonthTableBlock";
+import PictureDailyComponent from "../Blocks/ComplexBlocks/PictureDailyBlock";
+// import ProgressComponent from "../Blocks/progressComponent";
+import CounterComponent from "../Blocks/ComplexBlocks/CounterBlock";
 
 const ComponentToPrint = React.forwardRef((props, ref) => {
   const [{ isOver }, drop] = useDrop({
@@ -44,7 +44,7 @@ const ComponentToPrint = React.forwardRef((props, ref) => {
       doublecircularDaily: <DoubleCircularDailyComponent />,
       monthTable: <MonthTableComponent />,
       pictureDiary: <PictureDailyComponent />,
-      progressBar: <ProgressComponent />,
+      // progressBar: <ProgressComponent />,
       counter: <CounterComponent />,
     };
 

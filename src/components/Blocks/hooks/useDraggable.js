@@ -1,4 +1,4 @@
-import { ItemTypes } from "../../constants/itemTypes";
+import { ItemTypes } from "../../Constants/itemTypes";
 import { useDrag } from "react-dnd";
 
 export function useDraggable() {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import styles from "../styles/componentBlocks.module.css";
-import { ItemTypes } from "../constants/itemTypes";
+import styles from "./styles/BlockTab.module.css";
+import { ItemTypes } from "../Constants/itemTypes";
 import { useDrag } from "react-dnd";
 
 //탭에 들어가는 것은 ~Creator로 통일
@@ -160,7 +160,7 @@ function ComponentTab(props) {
     ),
     tab3: (
       <div>
-        <div>테두리 그리기</div>
+        {/* <div>테두리 그리기</div>
         <div>
           <input
             type="radio"
@@ -185,7 +185,7 @@ function ComponentTab(props) {
             value="3"
           />
           <label for="pageBorderChoice3">테두리3</label>
-        </div>
+        </div> */}
 
         <div>타공자리 확보 side-space</div>
         <input type="checkbox" id="sideHoleSpace" name="sideHoleSpace" />

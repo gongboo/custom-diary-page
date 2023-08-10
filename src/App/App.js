@@ -1,17 +1,16 @@
-import "../styles/App.css";
-import styles from "../styles/app.module.css";
+import "./App.css";
 import React, { useState, useRef } from "react";
-import PrintButton from "./PrintButton";
+import PrintButton from "../components/PrintButton";
 
-import ComponentTab from "./componentTab";
-import ComponentToPrint from "./diaryPage";
+import ComponentTab from "../components/BlockTab/BlockTab";
+import ComponentToPrint from "../components/DiaryPage/DiaryPage";
 
 function App() {
   const componentRef = useRef();
 
   return (
     <div className="App" style={{ display: "grid", justifyContent: "center" }}>
-      <h1 className={styles.title} style={{ justifySelf: "center" }}>
+      <h1 style={{ justifySelf: "center", color: "#ffffff" }}>
         CUSTOM DIARY PAGE
       </h1>
       <ComponentTab />

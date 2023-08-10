@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import { ItemTypes } from "../../constants/itemTypes";
+import { ItemTypes } from "../../Constants/itemTypes";
 import { useDrag } from "react-dnd";
-import styles from "../../styles/diaryComponent.module.css";
-import { useDraggable } from "./useDraggable";
-import { useNumAttributeAdjuster, useFocus } from "./adjustmentHooks";
-import DiaryComponent from "./diaryComponent";
-import AdjustmentBar from "./adjustmentBar";
+import { useDraggable } from "../hooks/useDraggable";
+import {
+  useNumAttributeAdjuster,
+  useFocus,
+} from "../AdjustmentBar/hooks/adjustmentHooks";
+import DiaryComponent from "../BlockWrapper";
+import AdjustmentBar from "../AdjustmentBar/AdjustmentBar";
 const MonthTableComponent = () => {
   const { isDragging, drag } = useDraggable();
   const [isFocused, setIsFocused, handleBlur] = useFocus();

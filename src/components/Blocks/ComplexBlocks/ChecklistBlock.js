@@ -1,15 +1,14 @@
 import React, { useState } from "react";
-import { ItemTypes } from "../../constants/itemTypes";
+import { ItemTypes } from "../../Constants/itemTypes";
 import { useDrag } from "react-dnd";
-import styles from "../../styles/diaryComponent.module.css";
-import { useDraggable } from "./useDraggable";
+import { useDraggable } from "../hooks/useDraggable";
 import {
   useNumAttributeAdjuster,
   useFocus,
   useIsOrNot,
-} from "./adjustmentHooks";
-import DiaryComponent from "./diaryComponent";
-import AdjustmentBar from "./adjustmentBar";
+} from "../AdjustmentBar/hooks/adjustmentHooks";
+import DiaryComponent from "../BlockWrapper";
+import AdjustmentBar from "../AdjustmentBar/AdjustmentBar";
 
 const ChecklistComponent = () => {
   const { isDragging, drag } = useDraggable();
