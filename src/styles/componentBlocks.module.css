@@ -8,8 +8,10 @@
 
 .tabBlock {
   width: 500px;
-  height: 200px;
+  height: 150px;
   background-color: gray;
+  box-sizing: border-box;
+  padding: 5px;
 }
 
 .componentEx {

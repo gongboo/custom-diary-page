@@ -53,15 +53,13 @@ const ComponentToPrint = React.forwardRef((props, ref) => {
 
   return (
     <div ref={ref}>
-      {
-        <div ref={drop} className={styles.diary_page}>
-          {widgets.map((widget, index) => (
-            <div className={styles.diary_page_div} key={index}>
-              {widget}
-            </div>
-          ))}
-        </div>
-      }
+      <div ref={drop} className={styles.diary_page}>
+        {widgets.map((widget, index) => (
+          <div className={styles.diary_page_div} key={index}>
+            {widget}
+          </div>
+        ))}
+      </div>
     </div>
   );
 });

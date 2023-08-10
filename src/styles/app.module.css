@@ -2,8 +2,9 @@
   display: flex;
   flex-direction: column;
   width: 500px; /*80vw;*/
-  height: 707px; /*141vw;*/
+  height: 700px; /*141vw;*/
   background-color: white;
+  box-sizing: border-box;
   padding: 10px;
   /* display: grid;
   place-items: center; */
