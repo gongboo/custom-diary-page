@@ -5,7 +5,7 @@
   height: 700px; /*141vw;*/
   background-color: white;
   box-sizing: border-box;
-  padding: 10px;
+
   /* display: grid;
   place-items: center; */
 }
@@ -17,8 +17,12 @@
 
 @media print {
   .diary_page {
-    width: 210mm;
-    height: 297mm;
+    transform: scale(2); /*일단 두배로 설정함 나중에 수정*/
+    transform-origin: top left;
+    image-rendering: pixelated; /*흐려짐 방지: 버전 확인하기*/
+    /* width: 50%; */
+    /* width: 210mm;
+    height: 297mm; */
   }
 }
 

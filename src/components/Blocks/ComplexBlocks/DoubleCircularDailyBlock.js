@@ -9,7 +9,7 @@ import {
 import DiaryComponent from "../BlockWrapper";
 import AdjustmentBar from "../AdjustmentBar/AdjustmentBar";
 
-const DoubleCircularDailyComponent = () => {
+const DoubleCircularDailyComponent = (props) => {
   const { isDragging, drag } = useDraggable();
   //const [circleWidth, setCircleWidth] = useState(200);
 
@@ -113,7 +113,7 @@ const DoubleCircularDailyComponent = () => {
         </div>
       </div>{" "}
       {isFocused && (
-        <AdjustmentBar>
+        <AdjustmentBar onDelete={props.onDelete}>
           <button onMouseDown={increaseCircleWidth}>+</button>
           높이
           <button onMouseDown={decreaseCircleWidth}>-</button>

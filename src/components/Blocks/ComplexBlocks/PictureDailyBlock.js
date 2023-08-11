@@ -9,7 +9,7 @@ import {
 import DiaryComponent from "../BlockWrapper";
 import AdjustmentBar from "../AdjustmentBar/AdjustmentBar";
 
-const PictureDailyComponent = () => {
+const PictureDailyComponent = (props) => {
   const { isDragging, drag } = useDraggable();
 
   const [wordBlockWidth, setWordBlockWidth] = useState(50);
@@ -73,7 +73,7 @@ const PictureDailyComponent = () => {
         {wordBlocks(rowNum, colNum)}
       </div>
       {isFocused && (
-        <AdjustmentBar>
+        <AdjustmentBar onDelete={props.onDelete}>
           <button onMouseDown={increaseHeight}>+</button>
           높이
           <button onMouseDown={decreaseHeight}>-</button>

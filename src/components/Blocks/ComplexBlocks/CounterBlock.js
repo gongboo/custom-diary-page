@@ -9,7 +9,7 @@ import {
 import DiaryComponent from "../BlockWrapper";
 import AdjustmentBar from "../AdjustmentBar/AdjustmentBar";
 
-const CounterComponent = () => {
+const CounterComponent = (props) => {
   const { isDragging, drag } = useDraggable();
   const [isFocused, setIsFocused, handleBlur] = useFocus();
   const [colorLineThickness, setColorLineThickness] = useState(50);
@@ -52,7 +52,7 @@ const CounterComponent = () => {
         {Array.from({ length: countNum }).map((_, i) => oneParticle(i + 1))}
       </div>
       {isFocused && (
-        <AdjustmentBar>
+        <AdjustmentBar onDelete={props.onDelete}>
           <button onMouseDown={increaseCountNum}>+</button>
           갯수
           <button onMouseDown={decreaseCountNum}>-</button>

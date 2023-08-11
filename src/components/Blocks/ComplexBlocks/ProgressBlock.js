@@ -1,13 +1,11 @@
 import React, { useState } from "react";
-import { ItemTypes } from "../../constants/itemTypes";
-import { useDrag } from "react-dnd";
 import styles from "../../styles/diaryComponent.module.css";
 import { useDraggable } from "./useDraggable";
 import { useNumAttributeAdjuster, useFocus } from "../../hooks/adjustmentHooks";
 import DiaryComponent from "./diaryComponent";
 import AdjustmentBar from "./adjustmentBar/adjustmentBar";
 
-const ProgressComponent = () => {
+const ProgressComponent = (props) => {
   const { isDragging, drag } = useDraggable();
   const [isFocused, setIsFocused, handleBlur] = useFocus();
   const [colorLineThickness, setColorLineThickness] = useState(50);
@@ -37,7 +35,7 @@ const ProgressComponent = () => {
         </table>
       </div>
       {isFocused && (
-        <AdjustmentBar>
+        <AdjustmentBar onDelete={props.onDelete}>
           <button onMouseDown={increaseHeight}>+</button>
           높이
           <button onMouseDown={decreaseHeight}>-</button>

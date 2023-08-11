@@ -9,7 +9,7 @@ import {
 import DiaryComponent from "../BlockWrapper";
 import AdjustmentBar from "../AdjustmentBar/AdjustmentBar";
 
-const TextComponent = () => {
+const TextComponent = (props) => {
   const { isDragging, drag } = useDraggable();
   const [isFocused, setIsFocused, handleBlur] = useFocus();
   const [colorLineThickness, setColorLineThickness] = useState(50);
@@ -44,7 +44,7 @@ const TextComponent = () => {
         />
       </div>{" "}
       {isFocused && (
-        <AdjustmentBar>
+        <AdjustmentBar onDelete={props.onDelete}>
           <button onMouseDown={increaseSize}>+</button>
           높이
           <button onMouseDown={decreaseSize}>-</button>

@@ -137,6 +137,7 @@ function DoubleCircularDailyCreator() {
 
 function ComponentTab(props) {
   const [tabState, setTabState] = useState("tab1");
+
   const tabContent = {
     tab1: (
       <div>
@@ -188,13 +189,34 @@ function ComponentTab(props) {
         </div> */}
 
         <div>타공자리 확보 side-space</div>
+        <label>
+          <input
+            type="radio"
+            value="left"
+            checked={props.holeDirection === "left"}
+            onChange={props.changeHoleDirection}
+          />
+          left
+        </label>
+
+        <label>
+          <input
+            type="radio"
+            value="top"
+            checked={props.holeDirection === "top"}
+            onChange={props.changeHoleDirection}
+          />
+          top
+        </label>
         <input type="checkbox" id="sideHoleSpace" name="sideHoleSpace" />
         <label for="sideHoleSpace">타공 간격</label>
         <input
           type="number"
           id="sideHoleSpace"
           name="sideHoleSpace"
-          min="10"
+          value={props.holeSpace}
+          onChange={(event) => props.changeHoleSpace(event.target.value)}
+          min="1"
           max="100"
         />
 
@@ -203,7 +225,9 @@ function ComponentTab(props) {
           type="number"
           id="pagePadding"
           name="pagePadding"
-          min="10"
+          value={props.pad}
+          onChange={(event) => props.changePad(event.target.value)}
+          min="1"
           max="100"
         />
       </div>

@@ -10,7 +10,7 @@ import {
 import DiaryComponent from "../BlockWrapper";
 import AdjustmentBar from "../AdjustmentBar/AdjustmentBar";
 
-const BoxComponent = () => {
+const BoxComponent = (props) => {
   const { isDragging, drag } = useDraggable();
 
   const [isFocused, setIsFocused, handleBlur] = useFocus();
@@ -38,7 +38,7 @@ const BoxComponent = () => {
           }}
         ></div>
         {isFocused && (
-          <AdjustmentBar>
+          <AdjustmentBar onDelete={(widget) => props.onDelete(props.key)}>
             <button onMouseDown={increaseHeight}>+</button>
             높이
             <button onMouseDown={decreaseHeight}>-</button>

@@ -9,7 +9,7 @@ import {
 import DiaryComponent from "../BlockWrapper";
 import AdjustmentBar from "../AdjustmentBar/AdjustmentBar";
 
-const LineComponent = () => {
+const LineComponent = (props) => {
   const { isDragging, drag } = useDraggable();
   const [isFocused, setIsFocused, handleBlur] = useFocus();
   const [colorLineThickness, setColorLineThickness] = useState(50);
@@ -37,7 +37,7 @@ const LineComponent = () => {
         }}
       ></div>
       {isFocused && (
-        <AdjustmentBar>
+        <AdjustmentBar onDelete={props.onDelete}>
           <button onMouseDown={increaseHeight}>+</button>
           굵기
           <button onMouseDown={decreaseHeight}>-</button>

@@ -8,7 +8,7 @@ import {
 } from "../AdjustmentBar/hooks/adjustmentHooks";
 import DiaryComponent from "../BlockWrapper";
 import AdjustmentBar from "../AdjustmentBar/AdjustmentBar";
-const MonthTableComponent = () => {
+const MonthTableComponent = (props) => {
   const { isDragging, drag } = useDraggable();
   const [isFocused, setIsFocused, handleBlur] = useFocus();
   const [colorLineThickness, setColorLineThickness] = useState(50);
@@ -78,7 +78,7 @@ const MonthTableComponent = () => {
         {drawTable(rowNum, colNum)}
       </div>
       {isFocused && (
-        <AdjustmentBar>
+        <AdjustmentBar onDelete={props.onDelete}>
           <button onMouseDown={increaseNameSpaceHeight}>+</button>
           높이1
           <button onMouseDown={decreaseNameSpaceHeight}>-</button>

@@ -10,7 +10,7 @@ import {
 import DiaryComponent from "../BlockWrapper";
 import AdjustmentBar from "../AdjustmentBar/AdjustmentBar";
 
-const ChecklistComponent = () => {
+const ChecklistComponent = (props) => {
   const { isDragging, drag } = useDraggable();
   const [isFocused, setIsFocused, handleBlur] = useFocus();
   const [numChecklist, increaseChecklist, decreaseChecklist] =
@@ -27,7 +27,7 @@ const ChecklistComponent = () => {
       {oneCheckList(numChecklist)}
 
       {isFocused && (
-        <AdjustmentBar>
+        <AdjustmentBar onDelete={props.onDelete}>
           <button onMouseDown={increaseChecklist}>+</button>
           추가
           <button onMouseDown={decreaseChecklist}>-</button>

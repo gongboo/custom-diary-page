@@ -32,20 +32,26 @@ const ComponentToPrint = React.forwardRef((props, ref) => {
     setWidgets((widgets) => [...widgets, findComponent(item.name)]);
   }
 
+  function onDelete(deletedWidgetId) {
+    setWidgets(() => [
+      widgets.filter((widget) => widget.id !== deletedWidgetId),
+    ]);
+  }
+
   function findComponent(str) {
     const componentMap = {
-      line: <LineComponent />,
-      square: <BoxComponent />,
-      text: <TextComponent />,
-      checklist: <ChecklistComponent />,
-      grid: <GridComponent />,
-      dotgrid: <DotgridComponent />,
-      circularDaily: <CircularDailyComponent />,
-      doublecircularDaily: <DoubleCircularDailyComponent />,
-      monthTable: <MonthTableComponent />,
-      pictureDiary: <PictureDailyComponent />,
-      // progressBar: <ProgressComponent />,
-      counter: <CounterComponent />,
+      line: <LineComponent onDelete={onDelete} />,
+      square: <BoxComponent onDelete={onDelete} />,
+      text: <TextComponent onDelete={onDelete} />,
+      checklist: <ChecklistComponent onDelete={onDelete} />,
+      grid: <GridComponent onDelete={onDelete} />,
+      dotgrid: <DotgridComponent onDelete={onDelete} />,
+      circularDaily: <CircularDailyComponent onDelete={onDelete} />,
+      doublecircularDaily: <DoubleCircularDailyComponent onDelete={onDelete} />,
+      monthTable: <MonthTableComponent onDelete={onDelete} />,
+      pictureDiary: <PictureDailyComponent onDelete={onDelete} />,
+      // progressBar: <ProgressComponent onDelete={onDelete}/>,
+      counter: <CounterComponent onDelete={onDelete} />,
     };
 
     return componentMap[str];
@@ -53,9 +59,38 @@ const ComponentToPrint = React.forwardRef((props, ref) => {
 
   return (
     <div ref={ref}>
-      <div ref={drop} className={styles.diary_page}>
+      <div
+        ref={drop}
+        className={styles.diary_page}
+        style={
+          props.holeDirection === "top"
+            ? {
+                padding:
+                  parseInt(props.pad) +
+                  parseInt(props.holeSpace) +
+                  "px " +
+                  props.pad +
+                  "px " +
+                  props.pad +
+                  "px " +
+                  props.pad +
+                  "px ",
+              }
+            : {
+                padding:
+                  props.pad +
+                  "px " +
+                  props.pad +
+                  "px " +
+                  props.pad +
+                  "px " +
+                  (parseInt(props.pad) + parseInt(props.holeSpace)) +
+                  "px",
+              }
+        }
+      >
         {widgets.map((widget, index) => (
-          <div className={styles.diary_page_div} key={index}>
+          <div className={styles.diary_page_div} key={widget.id}>
             {widget}
           </div>
         ))}

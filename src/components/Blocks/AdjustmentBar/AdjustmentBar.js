@@ -1,6 +1,6 @@
 import React from "react";
 
-const AdjustmentBar = ({ children }) => (
+const AdjustmentBar = ({ children, ...props }) => (
   <div
     style={{
       position: "absolute",
@@ -11,6 +11,17 @@ const AdjustmentBar = ({ children }) => (
     }}
   >
     {children}
+    <button
+      onMouseDown={(event) => {
+        event.preventDefault();
+        event.stopPropagation();
+      }}
+      onClick={() => {
+        props.onDelete();
+      }}
+    >
+      x
+    </button>
   </div>
 );
 
