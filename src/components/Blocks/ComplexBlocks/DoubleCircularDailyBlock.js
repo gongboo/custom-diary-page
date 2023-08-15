@@ -8,19 +8,39 @@ import {
 } from "../AdjustmentBar/hooks/adjustmentHooks";
 import DiaryComponent from "../BlockWrapper";
 import AdjustmentBar from "../AdjustmentBar/AdjustmentBar";
-
+import { useSelector } from "react-redux";
+import AdjustButton from "../AdjustmentBar/AdjustButton";
+import {
+  incHeight,
+  decHeight,
+  incColor,
+  decColor,
+  deleteBlock,
+  incRow,
+  decRow,
+  incCol,
+  decCol,
+  incNameSpaceHeight,
+  decNameSpaceHeight,
+  incContentHeight,
+  decContentHeight,
+} from "../../../ReduxFiles/actions";
 const DoubleCircularDailyComponent = (props) => {
-  const { isDragging, drag } = useDraggable();
-  //const [circleWidth, setCircleWidth] = useState(200);
+  // const { isDragging, drag } = useDraggable();
 
   const [isFocused, setIsFocused, handleBlur] = useFocus();
-  const [colorLineThickness, setColorLineThickness] = useState(50);
+  // const [colorLineThickness, setColorLineThickness] = useState(50);
 
-  const [circleWidth, increaseCircleWidth, decreaseCircleWidth] =
-    useNumAttributeAdjuster(200, 5);
-  const [colorLightness, increaseColorLightness, decreaseColorLightness] =
-    useNumAttributeAdjuster();
-  const color = "hsl(0,0%," + colorLightness + "%)";
+  // const [circleWidth, increaseCircleWidth, decreaseCircleWidth] =
+  //   useNumAttributeAdjuster(200, 5);
+  // const [colorLightness, increaseColorLightness, decreaseColorLightness] =
+  //   useNumAttributeAdjuster();
+  // const color = "hsl(0,0%," + colorLightness + "%)";
+
+  const thisBlock = useSelector((state) =>
+    state.find((block) => block.id === props.id)
+  );
+  const color = "hsl(0,0%," + thisBlock.color + "%)";
 
   const scaleMark = () => {
     const numberOfItems = 12;
@@ -40,7 +60,7 @@ const DoubleCircularDailyComponent = (props) => {
               "translate(-50%, -50%) rotate(" +
               30 * i +
               "deg) translate(" +
-              circleWidth / 2 +
+              thisBlock.height / 2 +
               "px, 0) ",
           }}
         ></div>
@@ -50,7 +70,7 @@ const DoubleCircularDailyComponent = (props) => {
   };
   return (
     <DiaryComponent
-      drag={drag}
+      // drag={drag}
       setIsFocused={setIsFocused}
       handleBlur={handleBlur}
     >
@@ -64,8 +84,8 @@ const DoubleCircularDailyComponent = (props) => {
         <div
           style={{
             position: "relative",
-            height: circleWidth,
-            width: circleWidth,
+            height: thisBlock.height,
+            width: thisBlock.height,
             borderRadius: "50%",
             border: "solid " + color,
             display: "inline-block",
@@ -89,8 +109,8 @@ const DoubleCircularDailyComponent = (props) => {
         <div
           style={{
             position: "relative",
-            height: circleWidth,
-            width: circleWidth,
+            height: thisBlock.height,
+            width: thisBlock.height,
             borderRadius: "50%",
             border: "solid " + color,
             display: "inline-block",
@@ -113,13 +133,19 @@ const DoubleCircularDailyComponent = (props) => {
         </div>
       </div>{" "}
       {isFocused && (
-        <AdjustmentBar onDelete={props.onDelete}>
-          <button onMouseDown={increaseCircleWidth}>+</button>
+        <AdjustmentBar onDelete={props.onDelete} id={props.id}>
+          <AdjustButton action={incHeight} label="+" id={props.id} />
+          높이
+          <AdjustButton action={decHeight} label="-" id={props.id} />
+          <AdjustButton action={incColor} label="+" id={props.id} />
+          색깔
+          <AdjustButton action={decColor} label="-" id={props.id} />
+          {/* <button onMouseDown={increaseCircleWidth}>+</button>
           높이
           <button onMouseDown={decreaseCircleWidth}>-</button>
           <button onMouseDown={increaseColorLightness}>+</button>
           색깔
-          <button onMouseDown={decreaseColorLightness}>-</button>
+          <button onMouseDown={decreaseColorLightness}>-</button> */}
         </AdjustmentBar>
       )}
     </DiaryComponent>

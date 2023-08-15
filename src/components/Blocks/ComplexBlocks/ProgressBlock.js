@@ -8,12 +8,12 @@ import AdjustmentBar from "./adjustmentBar/adjustmentBar";
 const ProgressComponent = (props) => {
   const { isDragging, drag } = useDraggable();
   const [isFocused, setIsFocused, handleBlur] = useFocus();
-  const [colorLineThickness, setColorLineThickness] = useState(50);
 
-  const [height, increaseHeight, decreaseHeight] = useNumAttributeAdjuster();
-  const [colorLightness, increaseColorLightness, decreaseColorLightness] =
-    useNumAttributeAdjuster();
-  const color = "hsl(0,0%," + colorLightness + "%)";
+  const thisBlock = useSelector((state) =>
+    state.find((block) => block.id === props.id)
+  );
+
+  const color = "hsl(0,0%," + thisBlock.color + "%)";
 
   return (
     <DiaryComponent
@@ -35,13 +35,21 @@ const ProgressComponent = (props) => {
         </table>
       </div>
       {isFocused && (
-        <AdjustmentBar onDelete={props.onDelete}>
-          <button onMouseDown={increaseHeight}>+</button>
+        <AdjustmentBar onDelete={props.onDelete} id={props.id}>
+          <AdjustButton action={incHeight} label="+" id={props.id} />
           높이
-          <button onMouseDown={decreaseHeight}>-</button>
-          <button onMouseDown={increaseColorLightness}>+</button>
+          <AdjustButton action={decHeight} label="-" id={props.id} />
+          <AdjustButton action={incColor} label="+" id={props.id} />
           색깔
-          <button onMouseDown={decreaseColorLightness}>-</button>
+          <AdjustButton action={decColor} label="-" id={props.id} />
+          <AdjustButton
+            action={deleteBlock}
+            label="x"
+            id={props.id}
+            // styles={{
+            //   backgroundColor: "red",
+            // }}
+          />
         </AdjustmentBar>
       )}
     </DiaryComponent>

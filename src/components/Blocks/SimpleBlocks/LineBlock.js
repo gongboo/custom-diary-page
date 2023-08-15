@@ -8,19 +8,32 @@ import {
 } from "../AdjustmentBar/hooks/adjustmentHooks";
 import DiaryComponent from "../BlockWrapper";
 import AdjustmentBar from "../AdjustmentBar/AdjustmentBar";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  incHeight,
+  decHeight,
+  incColor,
+  decColor,
+  changeIsRound,
+  deleteBlock,
+} from "../../../ReduxFiles/actions";
+import AdjustButton from "../AdjustmentBar/AdjustButton";
 
 const LineComponent = (props) => {
   const { isDragging, drag } = useDraggable();
   const [isFocused, setIsFocused, handleBlur] = useFocus();
-  const [colorLineThickness, setColorLineThickness] = useState(50);
-
-  const [height, increaseHeight, decreaseHeight] = useNumAttributeAdjuster(
-    2,
-    1
+  // const [colorLineThickness, setColorLineThickness] = useState(50);
+  // const [height, increaseHeight, decreaseHeight] = useNumAttributeAdjuster(
+  //   2,
+  //   1
+  // );
+  // const [colorLightness, increaseColorLightness, decreaseColorLightness] =
+  //   useNumAttributeAdjuster();
+  const thisBlock = useSelector((state) =>
+    state.find((block) => block.id === props.id)
   );
-  const [colorLightness, increaseColorLightness, decreaseColorLightness] =
-    useNumAttributeAdjuster();
-  const color = "hsl(0,0%," + colorLightness + "%)";
+
+  const color = "hsl(0,0%," + thisBlock.color + "%)";
 
   return (
     <DiaryComponent
@@ -30,20 +43,28 @@ const LineComponent = (props) => {
     >
       <div
         style={{
-          height: height + "px",
+          height: thisBlock.height + "px",
           width: "100%",
           backgroundColor: color,
           margin: "3px 0px 3px 0px",
         }}
       ></div>
       {isFocused && (
-        <AdjustmentBar onDelete={props.onDelete}>
-          <button onMouseDown={increaseHeight}>+</button>
-          굵기
-          <button onMouseDown={decreaseHeight}>-</button>
-          <button onMouseDown={increaseColorLightness}>+</button>
+        <AdjustmentBar onDelete={props.onDelete} id={props.id}>
+          <AdjustButton action={incHeight} label="+" id={props.id} />
+          높이
+          <AdjustButton action={decHeight} label="-" id={props.id} />
+          <AdjustButton action={incColor} label="+" id={props.id} />
           색깔
-          <button onMouseDown={decreaseColorLightness}>-</button>
+          <AdjustButton action={decColor} label="-" id={props.id} />
+          <AdjustButton
+            action={deleteBlock}
+            label="x"
+            id={props.id}
+            // styles={{
+            //   backgroundColor: "red",
+            // }}
+          />
         </AdjustmentBar>
       )}
     </DiaryComponent>

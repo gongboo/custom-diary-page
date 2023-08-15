@@ -18,18 +18,6 @@ export function useNumAttributeAdjuster(start = 20, stepSize = 10) {
   return [num, increaseNum, decreaseNum];
 }
 
-export function useIsOrNot() {
-  const [isSth, setIsSth] = useState(false);
-
-  const changeIsSth = (event) => {
-    event.preventDefault();
-    event.stopPropagation();
-    setIsSth(!isSth);
-  };
-
-  return [isSth, changeIsSth];
-}
-
 export function useFocus() {
   const [isFocused, setIsFocused] = useState(false);
   const handleBlur = () => {

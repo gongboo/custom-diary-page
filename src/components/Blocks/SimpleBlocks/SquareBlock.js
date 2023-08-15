@@ -2,55 +2,66 @@ import React, { useState } from "react";
 import { ItemTypes } from "../../Constants/itemTypes";
 import { useDrag } from "react-dnd";
 import { useDraggable } from "../hooks/useDraggable";
-import {
-  useNumAttributeAdjuster,
-  useFocus,
-  useIsOrNot,
-} from "../AdjustmentBar/hooks/adjustmentHooks";
+import { useFocus } from "../AdjustmentBar/hooks/adjustmentHooks";
 import DiaryComponent from "../BlockWrapper";
 import AdjustmentBar from "../AdjustmentBar/AdjustmentBar";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  incHeight,
+  decHeight,
+  incColor,
+  decColor,
+  changeIsRound,
+  deleteBlock,
+} from "../../../ReduxFiles/actions";
+import AdjustButton from "../AdjustmentBar/AdjustButton";
 
 const BoxComponent = (props) => {
-  const { isDragging, drag } = useDraggable();
+  // const { isDragging, drag } = useDraggable();
 
   const [isFocused, setIsFocused, handleBlur] = useFocus();
-  const [colorLineThickness, setColorLineThickness] = useState(50);
 
-  const [height, increaseHeight, decreaseHeight] = useNumAttributeAdjuster();
-  const [colorLightness, increaseColorLightness, decreaseColorLightness] =
-    useNumAttributeAdjuster();
-
-  const [isRound, changeIsRound] = useIsOrNot();
+  const thisBlock = useSelector((state) =>
+    state.find((block) => block.id === props.id)
+  );
 
   return (
     <div>
       <DiaryComponent
-        drag={drag}
+        // drag={drag}
         setIsFocused={setIsFocused}
         handleBlur={handleBlur}
       >
         <div
           style={{
-            height: height,
+            height: thisBlock.height,
             width: "100%",
-            border: "solid hsl(0,0%," + colorLightness + "%)",
-            borderRadius: isRound && "10px",
+            border: "solid hsl(0,0%," + thisBlock.color + "%)",
+            borderRadius: thisBlock.isRound && "10px",
           }}
         ></div>
         {isFocused && (
-          <AdjustmentBar onDelete={(widget) => props.onDelete(props.key)}>
-            <button onMouseDown={increaseHeight}>+</button>
+          <AdjustmentBar>
+            <AdjustButton action={incHeight} label="+" id={props.id} />
             높이
-            <button onMouseDown={decreaseHeight}>-</button>
-            <button onMouseDown={increaseColorLightness}>+</button>
+            <AdjustButton action={decHeight} label="-" id={props.id} />
+            <AdjustButton action={incColor} label="+" id={props.id} />
             색깔
-            <button onMouseDown={decreaseColorLightness}>-</button>
-            <button
-              onMouseDown={changeIsRound}
-              style={{ backgroundColor: isRound ? "red" : "blue" }}
-            >
-              모서리 둥글게
-            </button>
+            <AdjustButton action={decColor} label="-" id={props.id} />
+            <AdjustButton
+              action={changeIsRound}
+              label="모서리 둥글게"
+              id={props.id}
+              styles={{ backgroundColor: thisBlock.isRound ? "red" : "blue" }}
+            />
+            <AdjustButton
+              action={deleteBlock}
+              label="x"
+              id={props.id}
+              // styles={{
+              //   backgroundColor: "red",
+              // }}
+            />
           </AdjustmentBar>
         )}
       </DiaryComponent>

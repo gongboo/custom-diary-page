@@ -9,31 +9,58 @@ import {
 } from "../AdjustmentBar/hooks/adjustmentHooks";
 import DiaryComponent from "../BlockWrapper";
 import AdjustmentBar from "../AdjustmentBar/AdjustmentBar";
-
+import { useSelector } from "react-redux";
+import AdjustButton from "../AdjustmentBar/AdjustButton";
+import {
+  incHeight,
+  decHeight,
+  incColor,
+  decColor,
+  deleteBlock,
+  incRow,
+  decRow,
+  incCol,
+  decCol,
+  incNameSpaceHeight,
+  decNameSpaceHeight,
+  incContentHeight,
+  decContentHeight,
+  incChecklist,
+  decChecklist,
+} from "../../../ReduxFiles/actions";
 const ChecklistComponent = (props) => {
-  const { isDragging, drag } = useDraggable();
+  // const { isDragging, drag } = useDraggable();
   const [isFocused, setIsFocused, handleBlur] = useFocus();
-  const [numChecklist, increaseChecklist, decreaseChecklist] =
-    useNumAttributeAdjuster(3, 1);
-  const [colorLightness, increaseColorLightness, decreaseColorLightness] =
-    useNumAttributeAdjuster();
-
+  // const [numChecklist, increaseChecklist, decreaseChecklist] =
+  //   useNumAttributeAdjuster(3, 1);
+  // const [colorLightness, increaseColorLightness, decreaseColorLightness] =
+  //   useNumAttributeAdjuster();
+  const thisBlock = useSelector((state) =>
+    state.find((block) => block.id === props.id)
+  );
+  const color = "hsl(0,0%," + thisBlock.color + "%)";
   return (
     <DiaryComponent
-      drag={drag}
+      // drag={drag}
       setIsFocused={setIsFocused}
       handleBlur={handleBlur}
     >
-      {oneCheckList(numChecklist)}
+      {oneCheckList(thisBlock.numChecklist)}
 
       {isFocused && (
-        <AdjustmentBar onDelete={props.onDelete}>
-          <button onMouseDown={increaseChecklist}>+</button>
+        <AdjustmentBar>
+          <AdjustButton action={incChecklist} label="+" id={props.id} />
+          추가
+          <AdjustButton action={decChecklist} label="-" id={props.id} />
+          <AdjustButton action={incColor} label="+" id={props.id} />
+          색깔
+          <AdjustButton action={decColor} label="-" id={props.id} />
+          {/* <button onMouseDown={increaseChecklist}>+</button>
           추가
           <button onMouseDown={decreaseChecklist}>-</button>
           <button onMouseDown={increaseColorLightness}>+</button>
           색깔
-          <button onMouseDown={decreaseColorLightness}>-</button>
+          <button onMouseDown={decreaseColorLightness}>-</button> */}
         </AdjustmentBar>
       )}
     </DiaryComponent>
@@ -50,7 +77,7 @@ const ChecklistComponent = (props) => {
               height: "10px",
               width: "10px",
               margin: "5px",
-              border: "1px solid hsl(0,0%," + colorLightness + "%)",
+              border: "1px solid " + color,
             }}
           >
             {/* ♡☆○◇ */}
@@ -59,7 +86,7 @@ const ChecklistComponent = (props) => {
             style={{
               height: "1px",
               width: "100%",
-              backgroundColor: "hsl(0,0%," + colorLightness + "%)",
+              backgroundColor: color,
             }}
           ></div>
         </div>

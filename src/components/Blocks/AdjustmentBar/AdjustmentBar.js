@@ -11,17 +11,20 @@ const AdjustmentBar = ({ children, ...props }) => (
     }}
   >
     {children}
-    <button
+    {/* <button
       onMouseDown={(event) => {
         event.preventDefault();
         event.stopPropagation();
       }}
       onClick={() => {
-        props.onDelete();
+        console.log("in ab");
+        console.log(props.test);
+        console.log(props.id);
+        props.onDelete(props.id);
       }}
     >
       x
-    </button>
+    </button> */}
   </div>
 );
 

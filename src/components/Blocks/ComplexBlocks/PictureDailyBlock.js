@@ -8,39 +8,58 @@ import {
 } from "../AdjustmentBar/hooks/adjustmentHooks";
 import DiaryComponent from "../BlockWrapper";
 import AdjustmentBar from "../AdjustmentBar/AdjustmentBar";
+import { useSelector } from "react-redux";
+
+import AdjustButton from "../AdjustmentBar/AdjustButton";
+import {
+  incHeight,
+  decHeight,
+  incColor,
+  decColor,
+  deleteBlock,
+  incRow,
+  decRow,
+  incCol,
+  decCol,
+} from "../../../ReduxFiles/actions";
 
 const PictureDailyComponent = (props) => {
-  const { isDragging, drag } = useDraggable();
-
-  const [wordBlockWidth, setWordBlockWidth] = useState(50);
+  // const { isDragging, drag } = useDraggable();
   const [isFocused, setIsFocused, handleBlur] = useFocus();
-  const [colorLineThickness, setColorLineThickness] = useState(50);
 
-  const [height, increaseHeight, decreaseHeight] = useNumAttributeAdjuster(
-    50,
-    5
-  );
-  const [colorLightness, increaseColorLightness, decreaseColorLightness] =
-    useNumAttributeAdjuster();
-  const color = "hsl(0,0%," + colorLightness + "%)";
-  const [rowNum, increaseRowNum, decreaseRowNum] = useNumAttributeAdjuster(
-    4,
-    1
-  );
-  const [colNum, increaseColNum, decreaseColNum] = useNumAttributeAdjuster(
-    5,
-    1
+  // const [wordBlockWidth, setWordBlockWidth] = useState(50);
+  // const [colorLineThickness, setColorLineThickness] = useState(50);
+
+  // const [height, increaseHeight, decreaseHeight] = useNumAttributeAdjuster(
+  //   50,
+  //   5
+  // );
+  // const [colorLightness, increaseColorLightness, decreaseColorLightness] =
+  //   useNumAttributeAdjuster();
+  // const color = "hsl(0,0%," + colorLightness + "%)";
+  // const [rowNum, increaseRowNum, decreaseRowNum] = useNumAttributeAdjuster(
+  //   4,
+  //   1
+  // );
+  // const [colNum, increaseColNum, decreaseColNum] = useNumAttributeAdjuster(
+  //   5,
+  //   1
+  // );
+  const thisBlock = useSelector((state) =>
+    state.find((block) => block.id === props.id)
   );
 
-  const wordBlocks = (rowNum, ColNum) => {
+  const color = "hsl(0,0%," + thisBlock.color + "%)";
+
+  const wordBlocks = (rowNum, colNum) => {
     const widgets = [];
 
-    for (let i = 0; i < ColNum; i++) {
+    for (let i = 0; i < colNum; i++) {
       widgets.push(
         <td
           style={{
-            width: wordBlockWidth + "px",
-            height: wordBlockWidth + "px",
+            width: "50px",
+            height: "50px",
             border: "solid " + color,
           }}
         ></td>
@@ -59,7 +78,7 @@ const PictureDailyComponent = (props) => {
 
   return (
     <DiaryComponent
-      drag={drag}
+      // drag={drag}
       setIsFocused={setIsFocused}
       handleBlur={handleBlur}
     >
@@ -68,13 +87,35 @@ const PictureDailyComponent = (props) => {
           width: "100%",
         }}
       >
-        <div style={{ border: "solid " + color, height: height + "px" }}></div>
+        <div
+          style={{ border: "solid " + color, height: thisBlock.height + "px" }}
+        ></div>
 
-        {wordBlocks(rowNum, colNum)}
+        {wordBlocks(thisBlock.rowNum, thisBlock.colNum)}
       </div>
       {isFocused && (
-        <AdjustmentBar onDelete={props.onDelete}>
-          <button onMouseDown={increaseHeight}>+</button>
+        <AdjustmentBar>
+          <AdjustButton action={incHeight} label="+" id={props.id} />
+          높이
+          <AdjustButton action={decHeight} label="-" id={props.id} />
+          <AdjustButton action={incColor} label="+" id={props.id} />
+          색깔
+          <AdjustButton action={decColor} label="-" id={props.id} />
+          <AdjustButton action={incRow} label="+" id={props.id} />
+          가로
+          <AdjustButton action={decRow} label="-" id={props.id} />
+          <AdjustButton action={incCol} label="+" id={props.id} />
+          세로
+          <AdjustButton action={decCol} label="-" id={props.id} />
+          <AdjustButton
+            action={deleteBlock}
+            label="x"
+            id={props.id}
+            // styles={{
+            //   backgroundColor: "red",
+            // }}
+          />
+          {/* <button onMouseDown={increaseHeight}>+</button>
           높이
           <button onMouseDown={decreaseHeight}>-</button>
           <button onMouseDown={increaseColorLightness}>+</button>
@@ -85,7 +126,7 @@ const PictureDailyComponent = (props) => {
           <button onMouseDown={decreaseRowNum}>-</button>
           <button onMouseDown={increaseColNum}>+</button>
           세로
-          <button onMouseDown={decreaseColNum}>-</button>
+          <button onMouseDown={decreaseColNum}>-</button> */}
         </AdjustmentBar>
       )}
     </DiaryComponent>
