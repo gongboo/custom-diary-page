@@ -6,6 +6,7 @@ import store from "./ReduxFiles/store";
 
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
+import "./styles.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

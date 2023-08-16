@@ -161,75 +161,55 @@ function ComponentTab(props) {
     ),
     tab3: (
       <div>
-        {/* <div>테두리 그리기</div>
+        <div style={{ display: "block" }}>
+          <div style={{ display: "inline" }}>타공자리 위치 </div>
+          {/* <input type="checkbox" id="sideHoleSpace" name="sideHoleSpace" /> */}
+
+          <label>
+            <input
+              type="radio"
+              value="left"
+              checked={props.holeDirection === "left"}
+              onChange={props.changeHoleDirection}
+            />
+            left
+          </label>
+
+          <label>
+            <input
+              type="radio"
+              value="top"
+              checked={props.holeDirection === "top"}
+              onChange={props.changeHoleDirection}
+            />
+            top
+          </label>
+        </div>
         <div>
+          <label>타공 간격 </label>
           <input
-            type="radio"
-            id="pageBorderChoice1"
-            name="pageBorder"
-            value="1"
+            type="number"
+            id="sideHoleSpace"
+            name="sideHoleSpace"
+            value={props.holeSpace}
+            onChange={(event) => props.changeHoleSpace(event.target.value)}
+            min="1"
+            max="100"
           />
-          <label for="pageBorderChoice1">테두리1</label>
-
+        </div>
+        <div style={{ display: "block" }}>
+          <div style={{ display: "inline" }}>가장자리 간격 </div>
           <input
-            type="radio"
-            id="pageBorderChoice2"
-            name="pageBorder"
-            value="2"
+            type="number"
+            id="pagePadding"
+            name="pagePadding"
+            value={props.pad}
+            onChange={(event) => props.changePad(event.target.value)}
+            min="1"
+            max="100"
+            style={{ display: "inline" }}
           />
-          <label for="pageBorderChoice2">테두리2</label>
-
-          <input
-            type="radio"
-            id="pageBorderChoice3"
-            name="pageBorder"
-            value="3"
-          />
-          <label for="pageBorderChoice3">테두리3</label>
-        </div> */}
-
-        <div>타공자리 확보 side-space</div>
-        <label>
-          <input
-            type="radio"
-            value="left"
-            checked={props.holeDirection === "left"}
-            onChange={props.changeHoleDirection}
-          />
-          left
-        </label>
-
-        <label>
-          <input
-            type="radio"
-            value="top"
-            checked={props.holeDirection === "top"}
-            onChange={props.changeHoleDirection}
-          />
-          top
-        </label>
-        <input type="checkbox" id="sideHoleSpace" name="sideHoleSpace" />
-        <label for="sideHoleSpace">타공 간격</label>
-        <input
-          type="number"
-          id="sideHoleSpace"
-          name="sideHoleSpace"
-          value={props.holeSpace}
-          onChange={(event) => props.changeHoleSpace(event.target.value)}
-          min="1"
-          max="100"
-        />
-
-        <div>가장자리 간격 allside-space</div>
-        <input
-          type="number"
-          id="pagePadding"
-          name="pagePadding"
-          value={props.pad}
-          onChange={(event) => props.changePad(event.target.value)}
-          min="1"
-          max="100"
-        />
+        </div>
       </div>
     ),
     // tab3: <div className={styles.component_blocks}>Tab 3 Content</div>,
@@ -238,20 +218,23 @@ function ComponentTab(props) {
   return (
     <div className={styles.tabBlock}>
       <button
+        className={tabState === "tab1" ? "btn-normal" : "btn-unselect"}
         onClick={() => setTabState("tab1")}
-        style={tabState === "tab1" ? { background: "red" } : {}}
+        // style={tabState === "tab1" ? { background: "var(--sub1-color)" } : {}}
       >
         simple
       </button>
       <button
+        className={tabState === "tab2" ? "btn-normal" : "btn-unselect"}
         onClick={() => setTabState("tab2")}
-        style={tabState === "tab2" ? { background: "red" } : {}}
+        // style={tabState === "tab2" ? { background: "var(--sub1-color)" } : {}}
       >
         complex
       </button>
       <button
+        className={tabState === "tab3" ? "btn-normal" : "btn-unselect"}
         onClick={() => setTabState("tab3")}
-        style={tabState === "tab3" ? { background: "red" } : {}}
+        // style={tabState === "tab3" ? { background: "var(--sub1-color)" } : {}}
       >
         page setting
       </button>

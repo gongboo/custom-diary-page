@@ -1,6 +1,6 @@
 .BlockWrapper:focus-within {
   /* box-sizing: border-box; */
-  outline: 2px solid rgb(111, 0, 255);
+  outline: 2px solid var(--sub1-color);
 }
 
 .tableRow {

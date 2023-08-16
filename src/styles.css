@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap");
+
+:root {
+  --main-color: #4682a9;
+  --sub1-color: #749bc2;
+  --sub2-color: #91c8e4;
+  --sub3-color: #e5da60;
+  --sub4-color: #e7a653;
+  --diaryPage-color: #f6f4eb;
+}
+
+body {
+  background-color: var(--main-color);
+  font-family: "Noto Serif KR", serif;
+}
+
+.btn-normal {
+  background-color: var(--sub1-color);
+  border: solid var(--diaryPage-color);
+  padding: 5px;
+  font-family: "Noto Serif KR", serif;
+}
+
+.btn-adjust-normal {
+  /* background-color: var(--sub1-color); */
+  min-width: 25px;
+  min-height: 25px;
+  border-radius: 100%;
+  background-color: var(--diaryPage-color);
+  border-color: var(--diaryPage-color);
+
+  border-style: solid;
+  color: var(--sub1-color);
+}
+
+.btn-unselect {
+  background-color: var(--diaryPage-color);
+  border: solid var(--diaryPage-color);
+  padding: 5px;
+  font-family: "Noto Serif KR", serif;
+}
+
+.btn-normal:hover {
+  /* background-color: var(--sub2-color); */
+  border: solid var(--diaryPage-color);
+  padding: 5px;
+  font-family: "Noto Serif KR", serif;
+}

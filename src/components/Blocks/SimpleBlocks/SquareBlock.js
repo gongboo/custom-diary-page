@@ -35,6 +35,7 @@ const BoxComponent = (props) => {
         <div
           style={{
             height: thisBlock.height,
+            boxSizing: "border-box",
             width: "100%",
             border: "solid hsl(0,0%," + thisBlock.color + "%)",
             borderRadius: thisBlock.isRound && "10px",
@@ -48,12 +49,12 @@ const BoxComponent = (props) => {
             <AdjustButton action={incColor} label="+" id={props.id} />
             색깔
             <AdjustButton action={decColor} label="-" id={props.id} />
-            <AdjustButton
+            {/* <AdjustButton
               action={changeIsRound}
               label="모서리 둥글게"
               id={props.id}
               styles={{ backgroundColor: thisBlock.isRound ? "red" : "blue" }}
-            />
+            /> */}
             <AdjustButton
               action={deleteBlock}
               label="x"

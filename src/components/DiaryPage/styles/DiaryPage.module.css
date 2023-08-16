@@ -3,7 +3,7 @@
   flex-direction: column;
   width: 500px; /*80vw;*/
   height: 700px; /*141vw;*/
-  background-color: white;
+  background-color: var(--diaryPage-color);
   box-sizing: border-box;
 
   /* display: grid;
@@ -17,6 +17,7 @@
 
 @media print {
   .diary_page {
+    background-color: white;
     transform: scale(2); /*일단 두배로 설정함 나중에 수정*/
     transform-origin: top left;
     image-rendering: pixelated; /*흐려짐 방지: 버전 확인하기*/
@@ -26,8 +27,8 @@
   }
 }
 
-html {
-  background-color: black;
+body {
+  background-color: rgb(100, 173, 255);
 }
 
 .btn {

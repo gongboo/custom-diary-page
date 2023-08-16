@@ -4,27 +4,19 @@ const AdjustmentBar = ({ children, ...props }) => (
   <div
     style={{
       position: "absolute",
-      top: "-25px",
+      top: "-30px",
       height: "20px",
-      backgroundColor: "yellow",
+      backgroundColor: "var(--sub1-color)",
       padding: "5px",
+      margin: "auto",
+      display: "flex",
+      flexDirection: "row",
+      alignItems: "center",
+      borderTopLeftRadius: "5px 5px",
+      borderTopRightRadius: "5px 5px",
     }}
   >
     {children}
-    {/* <button
-      onMouseDown={(event) => {
-        event.preventDefault();
-        event.stopPropagation();
-      }}
-      onClick={() => {
-        console.log("in ab");
-        console.log(props.test);
-        console.log(props.id);
-        props.onDelete(props.id);
-      }}
-    >
-      x
-    </button> */}
   </div>
 );
 

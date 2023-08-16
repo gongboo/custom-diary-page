@@ -11,7 +11,11 @@ function AdjustButton({ action, label, id, styles = {} }) {
   };
 
   return (
-    <button onMouseDown={handleMouseDown} style={styles}>
+    <button
+      onMouseDown={handleMouseDown}
+      className="btn-adjust-normal"
+      style={styles}
+    >
       {label}
     </button>
   );

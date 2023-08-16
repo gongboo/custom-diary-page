@@ -1,15 +1,17 @@
 .component_blocks {
   float: left;
   margin: 5px;
-  border: solid;
+  border: solid var(--diaryPage-color);
   padding: 10px;
-  background-color: aliceblue;
+  background-color: var(--main-color);
 }
 
 .tabBlock {
   width: 500px;
   height: 150px;
-  background-color: gray;
+  background-color: var(--sub1-color);
+
+  border: solid var(--diaryPage-color);
   box-sizing: border-box;
   padding: 5px;
 }

@@ -24,10 +24,41 @@ function App() {
   };
 
   return (
-    <div className="App" style={{ display: "grid", justifyContent: "center" }}>
-      <h1 style={{ justifySelf: "center", color: "#ffffff" }}>
-        CUSTOM DIARY PAGE
-      </h1>
+    <div
+      className="App"
+      style={{
+        display: "grid",
+        justifyContent: "center",
+      }}
+    >
+      <div
+        style={{
+          display: "grid",
+          justifyContent: "center",
+          height: "fit-content",
+        }}
+      >
+        <h1
+          style={{
+            justifySelf: "center",
+            color: "var(--diaryPage-color)",
+            //position: "absolute",
+          }}
+        >
+          CUSTOM DIARY PAGE
+        </h1>
+        <div
+          style={{
+            alignSelf: "center",
+            justifySelf: "center",
+            border: "solid var(--diaryPage-color)",
+            position: "absolute",
+            width: "400px",
+            height: "50px",
+            borderRadius: "80%",
+          }}
+        ></div>
+      </div>
       <ComponentTab
         changePad={changePad}
         pad={padding}

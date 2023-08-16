@@ -49,6 +49,7 @@ const TextComponent = (props) => {
             border: "none",
             outline: "none",
             font: thisBlock.height + "px 'Fira Sans', sans-serif",
+            backgroundColor: "rgba(255, 255, 255, 0)",
             color: color,
           }}
         />
