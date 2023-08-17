@@ -102,7 +102,7 @@ const blocksReducer = (state = blocks, action) => {
         block.id === action.payload.id
           ? {
               ...block,
-              color: block.color + 20,
+              color: block.color + 0.1,
             }
           : block
       );
@@ -112,7 +112,7 @@ const blocksReducer = (state = blocks, action) => {
         block.id === action.payload.id
           ? {
               ...block,
-              color: block.color - 20,
+              color: block.color - 0.1,
             }
           : block
       );

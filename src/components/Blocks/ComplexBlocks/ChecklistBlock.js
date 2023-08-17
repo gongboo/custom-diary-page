@@ -28,6 +28,7 @@ import {
   incChecklist,
   decChecklist,
 } from "../../../ReduxFiles/actions";
+import { getColor } from "../common";
 const ChecklistComponent = (props) => {
   // const { isDragging, drag } = useDraggable();
   const [isFocused, setIsFocused, handleBlur] = useFocus();
@@ -38,7 +39,7 @@ const ChecklistComponent = (props) => {
   const thisBlock = useSelector((state) =>
     state.find((block) => block.id === props.id)
   );
-  const color = "hsl(0,0%," + thisBlock.color + "%)";
+  const color = getColor(thisBlock.color);
   return (
     <DiaryComponent
       // drag={drag}

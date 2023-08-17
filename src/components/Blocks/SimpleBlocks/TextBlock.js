@@ -18,6 +18,7 @@ import {
   decColor,
   deleteBlock,
 } from "../../../ReduxFiles/actions";
+import { getColor } from "../common";
 
 const TextComponent = (props) => {
   // const { isDragging, drag } = useDraggable();
@@ -27,7 +28,7 @@ const TextComponent = (props) => {
     state.find((block) => block.id === props.id)
   );
 
-  const color = "hsl(0,0%," + thisBlock.color + "%)";
+  const color = getColor(thisBlock.color);
 
   return (
     <DiaryComponent

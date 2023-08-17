@@ -25,6 +25,7 @@ import {
   incContentHeight,
   decContentHeight,
 } from "../../../ReduxFiles/actions";
+import { getColor } from "../common";
 const DoubleCircularDailyComponent = (props) => {
   // const { isDragging, drag } = useDraggable();
 
@@ -40,7 +41,7 @@ const DoubleCircularDailyComponent = (props) => {
   const thisBlock = useSelector((state) =>
     state.find((block) => block.id === props.id)
   );
-  const color = "hsl(0,0%," + thisBlock.color + "%)";
+  const color = getColor(thisBlock.color);
 
   const scaleMark = () => {
     const numberOfItems = 12;

@@ -22,7 +22,7 @@ import {
   incCol,
   decCol,
 } from "../../../ReduxFiles/actions";
-
+import { getColor } from "../common";
 const PictureDailyComponent = (props) => {
   // const { isDragging, drag } = useDraggable();
   const [isFocused, setIsFocused, handleBlur] = useFocus();
@@ -49,7 +49,7 @@ const PictureDailyComponent = (props) => {
     state.find((block) => block.id === props.id)
   );
 
-  const color = "hsl(0,0%," + thisBlock.color + "%)";
+  const color = getColor(thisBlock.color);
 
   const wordBlocks = (rowNum, colNum) => {
     const widgets = [];

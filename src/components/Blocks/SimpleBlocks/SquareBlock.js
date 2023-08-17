@@ -15,6 +15,7 @@ import {
   deleteBlock,
 } from "../../../ReduxFiles/actions";
 import AdjustButton from "../AdjustmentBar/AdjustButton";
+import { getColor } from "../common";
 
 const BoxComponent = (props) => {
   // const { isDragging, drag } = useDraggable();
@@ -24,6 +25,7 @@ const BoxComponent = (props) => {
   const thisBlock = useSelector((state) =>
     state.find((block) => block.id === props.id)
   );
+  const color = getColor(thisBlock.color);
 
   return (
     <div>
@@ -37,7 +39,7 @@ const BoxComponent = (props) => {
             height: thisBlock.height,
             boxSizing: "border-box",
             width: "100%",
-            border: "solid hsl(0,0%," + thisBlock.color + "%)",
+            border: "solid " + color,
             borderRadius: thisBlock.isRound && "10px",
           }}
         ></div>

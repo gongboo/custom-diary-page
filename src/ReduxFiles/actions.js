@@ -5,7 +5,7 @@ export const addSquareBlock = (blockTypeStr) => {
       id: Date.now(),
       blockType: blockTypeStr,
       height: 10,
-      color: 0,
+      color: 1,
       isRound: false,
     },
   };
@@ -17,7 +17,7 @@ export const addTextBlock = (blockTypeStr) => {
       id: Date.now(),
       blockType: blockTypeStr,
       height: 10,
-      color: 0,
+      color: 1,
     },
   };
 };
@@ -28,7 +28,7 @@ export const addLineBlock = (blockTypeStr) => {
       id: Date.now(),
       blockType: blockTypeStr,
       height: 10,
-      color: 0,
+      color: 1,
     },
   };
 };
@@ -39,7 +39,7 @@ export const addGridBlock = (blockTypeStr) => {
       id: Date.now(),
       blockType: blockTypeStr,
       height: 10,
-      color: 0,
+      color: 1,
     },
   };
 };
@@ -50,7 +50,7 @@ export const addDotGridBlock = (blockTypeStr) => {
       id: Date.now(),
       blockType: blockTypeStr,
       height: 10,
-      color: 0,
+      color: 1,
     },
   };
 };
@@ -64,7 +64,7 @@ export const addMonthTableBlock = (blockTypeStr) => {
       contentHeight: 40,
       rowNum: 4,
       colNum: 5,
-      color: 0,
+      color: 1,
     },
   };
 };
@@ -77,7 +77,7 @@ export const addPictureDiaryBlock = (blockTypeStr) => {
       height: 10,
       rowNum: 4,
       colNum: 5,
-      color: 0,
+      color: 1,
     },
   };
 };
@@ -88,7 +88,7 @@ export const addChecklistBlock = (blockTypeStr) => {
       id: Date.now(),
       blockType: blockTypeStr,
       height: 10,
-      color: 0,
+      color: 1,
       numChecklist: 3,
     },
   };
@@ -100,7 +100,7 @@ export const addCounterBlock = (blockTypeStr) => {
       id: Date.now(),
       blockType: blockTypeStr,
       height: 10,
-      color: 0,
+      color: 1,
       counter: 15,
     },
   };
@@ -113,7 +113,7 @@ export const addCircularDailyBlock = (blockTypeStr) => {
       id: Date.now(),
       blockType: blockTypeStr,
       height: 400,
-      color: 0,
+      color: 1,
     },
   };
 };
@@ -124,7 +124,7 @@ export const addDoubleCircularDailyBlock = (blockTypeStr) => {
       id: Date.now(),
       blockType: blockTypeStr,
       height: 200,
-      color: 0,
+      color: 1,
     },
   };
 };

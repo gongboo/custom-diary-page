@@ -4,7 +4,7 @@ import { useDraggable } from "./useDraggable";
 import { useNumAttributeAdjuster, useFocus } from "../../hooks/adjustmentHooks";
 import DiaryComponent from "./diaryComponent";
 import AdjustmentBar from "./adjustmentBar/adjustmentBar";
-
+import { getColor } from "../common";
 const ProgressComponent = (props) => {
   const { isDragging, drag } = useDraggable();
   const [isFocused, setIsFocused, handleBlur] = useFocus();

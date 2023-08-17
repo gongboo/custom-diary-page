@@ -27,6 +27,7 @@ import {
   incCounter,
   decCounter,
 } from "../../../ReduxFiles/actions";
+import { getColor } from "../common";
 const CounterComponent = (props) => {
   // const { isDragging, drag } = useDraggable();
   const [isFocused, setIsFocused, handleBlur] = useFocus();
@@ -41,7 +42,7 @@ const CounterComponent = (props) => {
   const thisBlock = useSelector((state) =>
     state.find((block) => block.id === props.id)
   );
-  const color = "hsl(0,0%," + thisBlock.color + "%)";
+  const color = getColor(thisBlock.color);
   const oneParticle = (num) => {
     return (
       <div

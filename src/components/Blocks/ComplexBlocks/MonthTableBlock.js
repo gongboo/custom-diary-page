@@ -25,7 +25,7 @@ import {
   incContentHeight,
   decContentHeight,
 } from "../../../ReduxFiles/actions";
-
+import { getColor } from "../common";
 const MonthTableComponent = (props) => {
   // const { isDragging, drag } = useDraggable();
   const [isFocused, setIsFocused, handleBlur] = useFocus();
@@ -49,7 +49,7 @@ const MonthTableComponent = (props) => {
   const thisBlock = useSelector((state) =>
     state.find((block) => block.id === props.id)
   );
-  const color = "hsl(0,0%," + thisBlock.color + "%)";
+  const color = getColor(thisBlock.color);
 
   const drawTable = (rowNum, colNum) => {
     const td_widgets = [];

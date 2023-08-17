@@ -18,6 +18,7 @@ import {
   deleteBlock,
 } from "../../../ReduxFiles/actions";
 import AdjustButton from "../AdjustmentBar/AdjustButton";
+import { getColor } from "../common";
 
 const LineComponent = (props) => {
   const { isDragging, drag } = useDraggable();
@@ -33,7 +34,7 @@ const LineComponent = (props) => {
     state.find((block) => block.id === props.id)
   );
 
-  const color = "hsl(0,0%," + thisBlock.color + "%)";
+  const color = getColor(thisBlock.color);
 
   return (
     <DiaryComponent
