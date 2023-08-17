@@ -1,11 +1,7 @@
-import React, { useState } from "react";
-import { ItemTypes } from "../../Constants/itemTypes";
-import { useDrag } from "react-dnd";
+import React from "react";
+
 import { useDraggable } from "../hooks/useDraggable";
-import {
-  useNumAttributeAdjuster,
-  useFocus,
-} from "../AdjustmentBar/hooks/adjustmentHooks";
+import { useFocus } from "../AdjustmentBar/hooks/adjustmentHooks";
 import DiaryComponent from "../BlockWrapper";
 import AdjustmentBar from "../AdjustmentBar/AdjustmentBar";
 import { useSelector, useDispatch } from "react-redux";

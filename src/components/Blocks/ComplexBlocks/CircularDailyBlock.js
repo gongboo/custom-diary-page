@@ -1,11 +1,6 @@
 import React, { useState } from "react";
-import { ItemTypes } from "../../Constants/itemTypes";
-import { useDrag } from "react-dnd";
-import { useDraggable } from "../hooks/useDraggable";
-import {
-  useNumAttributeAdjuster,
-  useFocus,
-} from "../AdjustmentBar/hooks/adjustmentHooks";
+
+import { useFocus } from "../AdjustmentBar/hooks/adjustmentHooks";
 import DiaryComponent from "../BlockWrapper";
 import AdjustmentBar from "../AdjustmentBar/AdjustmentBar";
 import { useSelector } from "react-redux";
@@ -15,15 +10,6 @@ import {
   decHeight,
   incColor,
   decColor,
-  deleteBlock,
-  incRow,
-  decRow,
-  incCol,
-  decCol,
-  incNameSpaceHeight,
-  decNameSpaceHeight,
-  incContentHeight,
-  decContentHeight,
 } from "../../../ReduxFiles/actions";
 import { getColor } from "../common";
 import styles from "../styles/Block.module.css";

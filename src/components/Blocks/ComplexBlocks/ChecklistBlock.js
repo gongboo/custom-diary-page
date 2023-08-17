@@ -12,19 +12,8 @@ import AdjustmentBar from "../AdjustmentBar/AdjustmentBar";
 import { useSelector } from "react-redux";
 import AdjustButton from "../AdjustmentBar/AdjustButton";
 import {
-  incHeight,
-  decHeight,
   incColor,
   decColor,
-  deleteBlock,
-  incRow,
-  decRow,
-  incCol,
-  decCol,
-  incNameSpaceHeight,
-  decNameSpaceHeight,
-  incContentHeight,
-  decContentHeight,
   incChecklist,
   decChecklist,
 } from "../../../ReduxFiles/actions";

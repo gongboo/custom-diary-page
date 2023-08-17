@@ -1,11 +1,8 @@
-import React, { useState } from "react";
-import { ItemTypes } from "../../Constants/itemTypes";
-import { useDrag } from "react-dnd";
-import { useDraggable } from "../hooks/useDraggable";
+import React from "react";
 import { useFocus } from "../AdjustmentBar/hooks/adjustmentHooks";
 import DiaryComponent from "../BlockWrapper";
 import AdjustmentBar from "../AdjustmentBar/AdjustmentBar";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import {
   incHeight,
   decHeight,
@@ -16,7 +13,6 @@ import {
 } from "../../../ReduxFiles/actions";
 import AdjustButton from "../AdjustmentBar/AdjustButton";
 import { getColor } from "../common";
-import styles from "../styles/Block.module.css";
 
 const BoxComponent = (props) => {
   // const { isDragging, drag } = useDraggable();

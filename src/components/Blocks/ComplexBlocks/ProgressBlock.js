@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "../../styles/diaryComponent.module.css";
 import { useDraggable } from "./useDraggable";
-import { useNumAttributeAdjuster, useFocus } from "../../hooks/adjustmentHooks";
+import { useFocus } from "../../hooks/adjustmentHooks";
 import DiaryComponent from "./diaryComponent";
 import AdjustmentBar from "./adjustmentBar/adjustmentBar";
 import { getColor } from "../common";

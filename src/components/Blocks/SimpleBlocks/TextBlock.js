@@ -1,11 +1,6 @@
 import React, { useState } from "react";
-import { ItemTypes } from "../../Constants/itemTypes";
-import { useDrag } from "react-dnd";
-import { useDraggable } from "../hooks/useDraggable";
-import {
-  useNumAttributeAdjuster,
-  useFocus,
-} from "../AdjustmentBar/hooks/adjustmentHooks";
+
+import { useFocus } from "../AdjustmentBar/hooks/adjustmentHooks";
 import DiaryComponent from "../BlockWrapper";
 import AdjustmentBar from "../AdjustmentBar/AdjustmentBar";
 import { useSelector } from "react-redux";
@@ -19,7 +14,6 @@ import {
   deleteBlock,
 } from "../../../ReduxFiles/actions";
 import { getColor } from "../common";
-import styles from "../styles/Block.module.css";
 
 const TextComponent = (props) => {
   // const { isDragging, drag } = useDraggable();
