@@ -19,6 +19,7 @@ import {
 } from "../../../ReduxFiles/actions";
 import AdjustButton from "../AdjustmentBar/AdjustButton";
 import { getColor } from "../common";
+import styles from "../styles/Block.module.css";
 
 const LineComponent = (props) => {
   const { isDragging, drag } = useDraggable();

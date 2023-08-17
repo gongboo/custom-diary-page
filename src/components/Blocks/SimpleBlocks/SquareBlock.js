@@ -16,6 +16,7 @@ import {
 } from "../../../ReduxFiles/actions";
 import AdjustButton from "../AdjustmentBar/AdjustButton";
 import { getColor } from "../common";
+import styles from "../styles/Block.module.css";
 
 const BoxComponent = (props) => {
   // const { isDragging, drag } = useDraggable();
@@ -41,6 +42,7 @@ const BoxComponent = (props) => {
             width: "100%",
             border: "solid " + color,
             borderRadius: thisBlock.isRound && "10px",
+            //transition: "all ease 0.5s 0s",
           }}
         ></div>
         {isFocused && (

@@ -28,6 +28,8 @@ import {
   decCounter,
 } from "../../../ReduxFiles/actions";
 import { getColor } from "../common";
+import styles from "../styles/Block.module.css";
+
 const CounterComponent = (props) => {
   // const { isDragging, drag } = useDraggable();
   const [isFocused, setIsFocused, handleBlur] = useFocus();

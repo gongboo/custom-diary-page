@@ -19,6 +19,7 @@ import {
   deleteBlock,
 } from "../../../ReduxFiles/actions";
 import { getColor } from "../common";
+import styles from "../styles/Block.module.css";
 
 const TextComponent = (props) => {
   // const { isDragging, drag } = useDraggable();
@@ -37,6 +38,7 @@ const TextComponent = (props) => {
       handleBlur={handleBlur}
     >
       <div
+        // className={styles.block}
         style={{
           width: "100%",
         }}

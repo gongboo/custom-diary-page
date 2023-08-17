@@ -23,6 +23,8 @@ import {
   decCol,
 } from "../../../ReduxFiles/actions";
 import { getColor } from "../common";
+import styles from "../styles/Block.module.css";
+
 const PictureDailyComponent = (props) => {
   // const { isDragging, drag } = useDraggable();
   const [isFocused, setIsFocused, handleBlur] = useFocus();

@@ -29,6 +29,8 @@ import {
   decChecklist,
 } from "../../../ReduxFiles/actions";
 import { getColor } from "../common";
+import styles from "../styles/Block.module.css";
+
 const ChecklistComponent = (props) => {
   // const { isDragging, drag } = useDraggable();
   const [isFocused, setIsFocused, handleBlur] = useFocus();

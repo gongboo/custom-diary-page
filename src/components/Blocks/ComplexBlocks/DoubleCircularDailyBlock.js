@@ -26,6 +26,8 @@ import {
   decContentHeight,
 } from "../../../ReduxFiles/actions";
 import { getColor } from "../common";
+import styles from "../styles/Block.module.css";
+
 const DoubleCircularDailyComponent = (props) => {
   // const { isDragging, drag } = useDraggable();
 
