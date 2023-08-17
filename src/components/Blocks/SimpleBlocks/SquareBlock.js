@@ -37,10 +37,10 @@ const BoxComponent = (props) => {
       >
         <div
           style={{
-            height: thisBlock.height,
+            height: thisBlock.height, // "calc(var(--pageHeight-size)*0.1*" + thisBlock.height + ")",
             boxSizing: "border-box",
-            width: "100%",
-            border: "solid " + color,
+            // width: "100%",
+            border: "calc(var(--pageWidth-size)*0.004) solid " + color,
             borderRadius: thisBlock.isRound && "10px",
             //transition: "all ease 0.5s 0s",
           }}
@@ -59,14 +59,7 @@ const BoxComponent = (props) => {
               id={props.id}
               styles={{ backgroundColor: thisBlock.isRound ? "red" : "blue" }}
             /> */}
-            <AdjustButton
-              action={deleteBlock}
-              label="x"
-              id={props.id}
-              // styles={{
-              //   backgroundColor: "red",
-              // }}
-            />
+            <AdjustButton action={deleteBlock} label="x" id={props.id} />
           </AdjustmentBar>
         )}
       </DiaryComponent>

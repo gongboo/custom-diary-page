@@ -7,7 +7,7 @@ import ComponentToPrint from "../components/DiaryPage/DiaryPage";
 
 function App() {
   const componentRef = useRef();
-  const [padding, setPadding] = useState(10);
+  const [padding, setPadding] = useState(19);
   const [holeSpace, setHoleSpace] = useState(0);
 
   const changePad = (num) => {

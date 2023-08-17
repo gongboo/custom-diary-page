@@ -16,7 +16,7 @@ export const addTextBlock = (blockTypeStr) => {
     payload: {
       id: Date.now(),
       blockType: blockTypeStr,
-      height: 10,
+      height: 20,
       color: 1,
     },
   };
@@ -27,7 +27,7 @@ export const addLineBlock = (blockTypeStr) => {
     payload: {
       id: Date.now(),
       blockType: blockTypeStr,
-      height: 10,
+      height: 1,
       color: 1,
     },
   };
@@ -38,7 +38,7 @@ export const addGridBlock = (blockTypeStr) => {
     payload: {
       id: Date.now(),
       blockType: blockTypeStr,
-      height: 10,
+      height: 60,
       color: 1,
     },
   };
@@ -49,7 +49,7 @@ export const addDotGridBlock = (blockTypeStr) => {
     payload: {
       id: Date.now(),
       blockType: blockTypeStr,
-      height: 10,
+      height: 60,
       color: 1,
     },
   };
@@ -74,9 +74,9 @@ export const addPictureDiaryBlock = (blockTypeStr) => {
     payload: {
       id: Date.now(),
       blockType: blockTypeStr,
-      height: 10,
+      height: 200,
       rowNum: 4,
-      colNum: 5,
+      colNum: 8,
       color: 1,
     },
   };

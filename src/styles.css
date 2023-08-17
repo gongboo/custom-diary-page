@@ -7,6 +7,13 @@
   --sub3-color: #e5da60;
   --sub4-color: #e7a653;
   --diaryPage-color: #f6f4eb;
+
+  --pageWidth-size: 500px;
+  --pageHeight-size: 707px;
+  --line-size: calc(var(--pageWidth-size) * 0.0048);
+  --height-size: calc(var(--pageHeight-size) * 0.0048);
+
+  --scale-factor: 2;
 }
 
 body {
