@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./styles/BlockTab.module.css";
 import { ItemTypes } from "../Constants/itemTypes";
 import { useDrag } from "react-dnd";
-
+// import { MdSettingsOverscan } from "react-icons/md";
 //탭에 들어가는 것은 ~Creator로 통일
 
 function useDraggable(itemName) {
@@ -134,6 +134,15 @@ function DoubleCircularDailyCreator() {
     </div>
   );
 }
+function RuledCreator() {
+  const { isDragging, drag } = useDraggable("ruled");
+
+  return (
+    <div ref={drag} className={styles.component_blocks}>
+      <div>ruled</div>
+    </div>
+  );
+}
 
 function ComponentTab(props) {
   const [tabState, setTabState] = useState("tab1");
@@ -146,6 +155,7 @@ function ComponentTab(props) {
         <LineCreator />
         <SquareCreator />
         <TextCreator />
+        <RuledCreator />
       </div>
     ),
     tab2: (
@@ -236,6 +246,7 @@ function ComponentTab(props) {
         onClick={() => setTabState("tab3")}
         // style={tabState === "tab3" ? { background: "var(--sub1-color)" } : {}}
       >
+        {/* <MdSettingsOverscan /> */}
         page setting
       </button>
       {tabContent[tabState]}

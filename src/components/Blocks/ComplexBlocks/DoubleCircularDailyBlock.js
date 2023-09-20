@@ -10,21 +10,13 @@ import {
   decHeight,
   incColor,
   decColor,
+  deleteBlock,
 } from "../../../ReduxFiles/actions";
 import { getColor } from "../common";
 import styles from "../styles/Block.module.css";
 
 const DoubleCircularDailyComponent = (props) => {
-  // const { isDragging, drag } = useDraggable();
-
   const [isFocused, setIsFocused, handleBlur] = useFocus();
-  // const [colorLineThickness, setColorLineThickness] = useState(50);
-
-  // const [circleWidth, increaseCircleWidth, decreaseCircleWidth] =
-  //   useNumAttributeAdjuster(200, 5);
-  // const [colorLightness, increaseColorLightness, decreaseColorLightness] =
-  //   useNumAttributeAdjuster();
-  // const color = "hsl(0,0%," + colorLightness + "%)";
 
   const thisBlock = useSelector((state) =>
     state.find((block) => block.id === props.id)
@@ -129,12 +121,7 @@ const DoubleCircularDailyComponent = (props) => {
           <AdjustButton action={incColor} label="+" id={props.id} />
           색깔
           <AdjustButton action={decColor} label="-" id={props.id} />
-          {/* <button onMouseDown={increaseCircleWidth}>+</button>
-          높이
-          <button onMouseDown={decreaseCircleWidth}>-</button>
-          <button onMouseDown={increaseColorLightness}>+</button>
-          색깔
-          <button onMouseDown={decreaseColorLightness}>-</button> */}
+          <AdjustButton action={deleteBlock} label="x" id={props.id} />
         </AdjustmentBar>
       )}
     </DiaryComponent>

@@ -10,20 +10,13 @@ import {
   decColor,
   incCounter,
   decCounter,
+  deleteBlock,
 } from "../../../ReduxFiles/actions";
 import { getColor } from "../common";
 
 const CounterComponent = (props) => {
-  // const { isDragging, drag } = useDraggable();
   const [isFocused, setIsFocused, handleBlur] = useFocus();
-  // const [colorLineThickness, setColorLineThickness] = useState(50);
 
-  // const [countNum, increaseCountNum, decreaseCountNum] =
-  //   useNumAttributeAdjuster(20, 1);
-  // const [colorLightness, increaseColorLightness, decreaseColorLightness] =
-  //   useNumAttributeAdjuster();
-
-  // const color = "hsl(0,0%," + colorLightness + "%)";
   const thisBlock = useSelector((state) =>
     state.find((block) => block.id === props.id)
   );
@@ -53,7 +46,7 @@ const CounterComponent = (props) => {
         style={{
           display: "flex",
           flexWrap: "wrap",
-          justifyContent: "center", //"space-between", //"center",
+          justifyContent: "center",
         }}
       >
         {Array.from({ length: thisBlock.counter }).map((_, i) =>
@@ -68,6 +61,7 @@ const CounterComponent = (props) => {
           <AdjustButton action={incColor} label="+" id={props.id} />
           색깔
           <AdjustButton action={decColor} label="-" id={props.id} />
+          <AdjustButton action={deleteBlock} label="x" id={props.id} />
         </AdjustmentBar>
       )}
     </DiaryComponent>

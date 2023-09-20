@@ -49,12 +49,6 @@ const BoxComponent = (props) => {
             <AdjustButton action={incColor} label="+" id={props.id} />
             색깔
             <AdjustButton action={decColor} label="-" id={props.id} />
-            {/* <AdjustButton
-              action={changeIsRound}
-              label="모서리 둥글게"
-              id={props.id}
-              styles={{ backgroundColor: thisBlock.isRound ? "red" : "blue" }}
-            /> */}
             <AdjustButton action={deleteBlock} label="x" id={props.id} />
           </AdjustmentBar>
         )}

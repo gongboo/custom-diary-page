@@ -63,14 +63,7 @@ const DotgridComponent = (props) => {
           <AdjustButton action={incColor} label="+" id={props.id} />
           색깔
           <AdjustButton action={decColor} label="-" id={props.id} />
-          <AdjustButton
-            action={deleteBlock}
-            label="x"
-            id={props.id}
-            // styles={{
-            //   backgroundColor: "red",
-            // }}
-          />
+          <AdjustButton action={deleteBlock} label="x" id={props.id} />
         </AdjustmentBar>
       )}
     </DiaryComponent>

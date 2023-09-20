@@ -10,6 +10,7 @@ import {
   addChecklistBlock,
   addGridBlock,
   addDotGridBlock,
+  addRuledBlock,
   addCircularDailyBlock,
   addDoubleCircularDailyBlock,
   addMonthTableBlock,
@@ -22,6 +23,7 @@ import BoxComponent from "../Blocks/SimpleBlocks/SquareBlock";
 import DotgridComponent from "../Blocks/SimpleBlocks/DotgridBlock";
 import GridComponent from "../Blocks/SimpleBlocks/GridBlock";
 import TextComponent from "../Blocks/SimpleBlocks/TextBlock";
+import RuledComponent from "../Blocks/SimpleBlocks/RuledBlock";
 import ChecklistComponent from "../Blocks/ComplexBlocks/ChecklistBlock";
 import CircularDailyComponent from "../Blocks/ComplexBlocks/CircularDailyBlock";
 import DoubleCircularDailyComponent from "../Blocks/ComplexBlocks/DoubleCircularDailyBlock";
@@ -66,6 +68,9 @@ const ComponentToPrint = React.forwardRef((props, ref) => {
       dotgrid: () => {
         dispatch(addDotGridBlock(item.name));
       },
+      ruled: () => {
+        dispatch(addRuledBlock(item.name));
+      },
       circularDaily: () => {
         dispatch(addCircularDailyBlock(item.name));
       },
@@ -106,6 +111,7 @@ const ComponentToPrint = React.forwardRef((props, ref) => {
       checklist: () => <ChecklistComponent id={id} />,
       grid: () => <GridComponent id={id} />,
       dotgrid: () => <DotgridComponent id={id} />,
+      ruled: () => <RuledComponent id={id} />,
       circularDaily: () => <CircularDailyComponent id={id} />,
       doublecircularDaily: () => <DoubleCircularDailyComponent id={id} />,
       monthTable: () => <MonthTableComponent id={id} />,
@@ -127,7 +133,7 @@ const ComponentToPrint = React.forwardRef((props, ref) => {
     <div ref={ref}>
       <div
         ref={drop}
-        className={styles.diary_page}
+        className={styles.diary_page + " diary_page"}
         style={
           props.holeDirection === "top"
             ? {

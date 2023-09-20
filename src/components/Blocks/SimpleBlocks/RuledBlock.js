@@ -21,7 +21,7 @@ import {
 import { getColor } from "../common";
 import styles from "../styles/Block.module.css";
 
-const GridComponent = (props) => {
+const RuledComponent = (props) => {
   // const { isDragging, drag } = useDraggable();
   const [isFocused, setIsFocused, handleBlur] = useFocus();
 
@@ -42,11 +42,7 @@ const GridComponent = (props) => {
           width: "100%",
           height: thisBlock.height + "px",
           backgroundImage:
-            "linear-gradient(" +
-            color +
-            " 1px, transparent 1px), linear-gradient(90deg, " +
-            color +
-            " 1px, transparent 1px)",
+            "linear-gradient(" + color + " 1px, transparent 1px)",
           backgroundSize: "20px 20px",
         }}
       >
@@ -66,4 +62,4 @@ const GridComponent = (props) => {
   );
 };
 
-export default GridComponent;
+export default RuledComponent;

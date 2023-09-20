@@ -20,13 +20,6 @@ import styles from "../styles/Block.module.css";
 const LineComponent = (props) => {
   const { isDragging, drag } = useDraggable();
   const [isFocused, setIsFocused, handleBlur] = useFocus();
-  // const [colorLineThickness, setColorLineThickness] = useState(50);
-  // const [height, increaseHeight, decreaseHeight] = useNumAttributeAdjuster(
-  //   2,
-  //   1
-  // );
-  // const [colorLightness, increaseColorLightness, decreaseColorLightness] =
-  //   useNumAttributeAdjuster();
   const thisBlock = useSelector((state) =>
     state.find((block) => block.id === props.id)
   );

@@ -24,23 +24,7 @@ import styles from "../styles/Block.module.css";
 const MonthTableComponent = (props) => {
   // const { isDragging, drag } = useDraggable();
   const [isFocused, setIsFocused, handleBlur] = useFocus();
-  // const [colorLineThickness, setColorLineThickness] = useState(50);
 
-  // const [nameSpaceHeight, increaseNameSpaceHeight, decreaseNameSpaceHeight] =
-  //   useNumAttributeAdjuster(20, 10);
-  // const [contentHeight, increaseContentHeight, decreaseContentHeight] =
-  //   useNumAttributeAdjuster(40, 10);
-
-  // const [colorLightness, increaseColorLightness, decreaseColorLightness] =
-  //   useNumAttributeAdjuster();
-  // const [rowNum, increaseRowNum, decreaseRowNum] = useNumAttributeAdjuster(
-  //   4,
-  //   1
-  // );
-  // const [colNum, increaseColNum, decreaseColNum] = useNumAttributeAdjuster(
-  //   5,
-  //   1
-  // );
   const thisBlock = useSelector((state) =>
     state.find((block) => block.id === props.id)
   );
@@ -50,19 +34,52 @@ const MonthTableComponent = (props) => {
     const td_widgets = [];
     let i = 0;
     for (i = 0; i < colNum; i++) {
-      td_widgets.push(<td style={{ border: "solid " + color }}></td>);
+      if (i === 0) {
+        td_widgets.push(
+          <td
+            style={{
+              border: "1px solid " + color,
+              borderBottom: 0,
+            }}
+          ></td>
+        );
+      } else {
+        td_widgets.push(
+          <td
+            style={{
+              border: "1px solid " + color,
+              borderLeftWidth: 0,
+              borderBottom: 0,
+            }}
+          ></td>
+        );
+      }
     }
 
     const total_widgets = [];
 
     for (i = 0; i < rowNum; i++) {
       total_widgets.push(
-        <tr style={{ height: thisBlock.nameSpaceHeight + "px", width: "100%" }}>
+        <tr
+          style={{
+            borderCollapse: "collapse",
+            border: "1px gray solid",
+            height: thisBlock.nameSpaceHeight + "px",
+            width: "100%",
+          }}
+        >
           {td_widgets}
         </tr>
       );
       total_widgets.push(
-        <tr style={{ height: thisBlock.contentHeight + "px", width: "100%" }}>
+        <tr
+          style={{
+            borderCollapse: "collapse",
+            border: "1px gray solid",
+            height: thisBlock.contentHeight + "px",
+            width: "100%",
+          }}
+        >
           {td_widgets}
         </tr>
       );
@@ -71,6 +88,7 @@ const MonthTableComponent = (props) => {
       <table
         style={{
           borderCollapse: "collapse",
+          // border: "1px gray solid",
           width: "100%",
         }}
       >

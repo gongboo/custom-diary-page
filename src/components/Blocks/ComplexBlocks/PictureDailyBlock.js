@@ -23,24 +23,6 @@ const PictureDailyComponent = (props) => {
   // const { isDragging, drag } = useDraggable();
   const [isFocused, setIsFocused, handleBlur] = useFocus();
 
-  // const [wordBlockWidth, setWordBlockWidth] = useState(50);
-  // const [colorLineThickness, setColorLineThickness] = useState(50);
-
-  // const [height, increaseHeight, decreaseHeight] = useNumAttributeAdjuster(
-  //   50,
-  //   5
-  // );
-  // const [colorLightness, increaseColorLightness, decreaseColorLightness] =
-  //   useNumAttributeAdjuster();
-  // const color = "hsl(0,0%," + colorLightness + "%)";
-  // const [rowNum, increaseRowNum, decreaseRowNum] = useNumAttributeAdjuster(
-  //   4,
-  //   1
-  // );
-  // const [colNum, increaseColNum, decreaseColNum] = useNumAttributeAdjuster(
-  //   5,
-  //   1
-  // );
   const thisBlock = useSelector((state) =>
     state.find((block) => block.id === props.id)
   );

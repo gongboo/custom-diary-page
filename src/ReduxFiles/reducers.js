@@ -22,6 +22,8 @@ const blocksReducer = (state = blocks, action) => {
       return [...state, action.payload];
     case "GRID/CREATE":
       return [...state, action.payload];
+    case "RULED/CREATE":
+      return [...state, action.payload];
     case "DOTGRID/CREATE":
       return [...state, action.payload];
     case "MONTHTABLE/CREATE":
@@ -204,6 +206,17 @@ const blocksReducer = (state = blocks, action) => {
             }
           : block
       );
+
+    case "CHANGE_FONT": //적용 안되어 있음
+      return state.map((block, font) =>
+        block.id === action.payload.id
+          ? {
+              ...block,
+              font: font, //어 잠깐만
+            }
+          : block
+      );
+
     default:
       return state;
   }

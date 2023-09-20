@@ -10,21 +10,13 @@ import {
   decHeight,
   incColor,
   decColor,
+  deleteBlock,
 } from "../../../ReduxFiles/actions";
 import { getColor } from "../common";
 import styles from "../styles/Block.module.css";
 
 const CircularDailyComponent = (props) => {
-  // const { isDragging, drag } = useDraggable();
-  // const [circleWidth, setCircleWidth] = useState(300);
   const [isFocused, setIsFocused, handleBlur] = useFocus();
-  // const [height, increaseHeight, decreaseHeight] = useNumAttributeAdjuster(
-  //   300,
-  //   10
-  // );
-  // const [colorLightness, increaseColorLightness, decreaseColorLightness] =
-  //   useNumAttributeAdjuster();
-  // const color = "hsl(0,0%," + colorLightness + "%)";
 
   const thisBlock = useSelector((state) =>
     state.find((block) => block.id === props.id)
@@ -67,6 +59,9 @@ const CircularDailyComponent = (props) => {
       <div
         style={{
           width: "100%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
         }}
       >
         <div
@@ -103,12 +98,7 @@ const CircularDailyComponent = (props) => {
           <AdjustButton action={incColor} label="+" id={props.id} />
           색깔
           <AdjustButton action={decColor} label="-" id={props.id} />
-          {/* <button onMouseDown={increaseHeight}>+</button>
-          높이
-          <button onMouseDown={decreaseHeight}>-</button>
-          <button onMouseDown={increaseColorLightness}>+</button>
-          색깔
-          <button onMouseDown={decreaseColorLightness}>-</button> */}
+          <AdjustButton action={deleteBlock} label="x" id={props.id} />
         </AdjustmentBar>
       )}
     </DiaryComponent>

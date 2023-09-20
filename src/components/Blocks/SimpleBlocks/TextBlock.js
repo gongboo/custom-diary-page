@@ -6,18 +6,21 @@ import AdjustmentBar from "../AdjustmentBar/AdjustmentBar";
 import { useSelector } from "react-redux";
 
 import AdjustButton from "../AdjustmentBar/AdjustButton";
+import AdjustInput from "../AdjustmentBar/AdjustInput";
 import {
   incHeight,
   decHeight,
   incColor,
   decColor,
   deleteBlock,
+  changeFont,
 } from "../../../ReduxFiles/actions";
 import { getColor } from "../common";
 
 const TextComponent = (props) => {
   // const { isDragging, drag } = useDraggable();
   const [isFocused, setIsFocused, handleBlur] = useFocus();
+  const [font2, setFont2] = useState("Rock Salt");
 
   const thisBlock = useSelector((state) =>
     state.find((block) => block.id === props.id)
@@ -32,7 +35,6 @@ const TextComponent = (props) => {
       handleBlur={handleBlur}
     >
       <div
-        // className={styles.block}
         style={{
           width: "100%",
         }}
@@ -45,28 +47,23 @@ const TextComponent = (props) => {
             width: "100%",
             border: "none",
             outline: "none",
-            font: thisBlock.height + "px 'Fira Sans', sans-serif",
+            font: thisBlock.height + "px 'Noto Serif KR', sans-serif",
             backgroundColor: "rgba(255, 255, 255, 0)",
             color: color,
+            fontFamily: font2,
           }}
         />
       </div>{" "}
       {isFocused && (
         <AdjustmentBar>
+          {/* <AdjustInput action={changeFont} label="font" id={props.id} /> */}
           <AdjustButton action={incHeight} label="+" id={props.id} />
           높이
           <AdjustButton action={decHeight} label="-" id={props.id} />
           <AdjustButton action={incColor} label="+" id={props.id} />
           색깔
           <AdjustButton action={decColor} label="-" id={props.id} />
-          <AdjustButton
-            action={deleteBlock}
-            label="x"
-            id={props.id}
-            // styles={{
-            //   backgroundColor: "red",
-            // }}
-          />
+          <AdjustButton action={deleteBlock} label="x" id={props.id} />
         </AdjustmentBar>
       )}
     </DiaryComponent>

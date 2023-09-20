@@ -10,6 +10,7 @@ import {
   decColor,
   incChecklist,
   decChecklist,
+  deleteBlock,
 } from "../../../ReduxFiles/actions";
 import { getColor } from "../common";
 import styles from "../styles/Block.module.css";
@@ -41,12 +42,7 @@ const ChecklistComponent = (props) => {
           <AdjustButton action={incColor} label="+" id={props.id} />
           색깔
           <AdjustButton action={decColor} label="-" id={props.id} />
-          {/* <button onMouseDown={increaseChecklist}>+</button>
-          추가
-          <button onMouseDown={decreaseChecklist}>-</button>
-          <button onMouseDown={increaseColorLightness}>+</button>
-          색깔
-          <button onMouseDown={decreaseColorLightness}>-</button> */}
+          <AdjustButton action={deleteBlock} label="x" id={props.id} />
         </AdjustmentBar>
       )}
     </DiaryComponent>
@@ -65,9 +61,7 @@ const ChecklistComponent = (props) => {
               margin: "5px",
               border: "1px solid " + color,
             }}
-          >
-            {/* ♡☆○◇ */}
-          </div>
+          ></div>
           <div
             style={{
               height: "1px",
