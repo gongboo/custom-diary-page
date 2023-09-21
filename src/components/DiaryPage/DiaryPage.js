@@ -122,40 +122,43 @@ const ComponentToPrint = React.forwardRef((props, ref) => {
   }
 
   return (
-    <div ref={ref}>
-      <div
-        ref={drop}
-        className={styles.diary_page + " diary_page"}
-        style={
-          props.holeDirection === "top"
-            ? {
-                padding:
-                  parseInt(props.pad) +
-                  parseInt(props.holeSpace) +
-                  "px " +
-                  props.pad +
-                  "px " +
-                  props.pad +
-                  "px " +
-                  props.pad +
-                  "px ",
-              }
-            : {
-                padding:
-                  props.pad +
-                  "px " +
-                  props.pad +
-                  "px " +
-                  props.pad +
-                  "px " +
-                  (parseInt(props.pad) + parseInt(props.holeSpace)) +
-                  "px",
-              }
-        }
-      >
-        {blocks.map((block) => (
-          <div key={block.id}>{findBlock(block.blockType, block.id)}</div>
-        ))}
+    <div style={{ overflow: "hidden" }}>
+      <div style={{ height: "10px" }}></div>
+      <div ref={ref}>
+        <div
+          ref={drop}
+          className={styles.diary_page + " diary_page"}
+          style={
+            props.holeDirection === "top"
+              ? {
+                  padding:
+                    parseInt(props.pad) +
+                    parseInt(props.holeSpace) +
+                    "px " +
+                    props.pad +
+                    "px " +
+                    props.pad +
+                    "px " +
+                    props.pad +
+                    "px ",
+                }
+              : {
+                  padding:
+                    props.pad +
+                    "px " +
+                    props.pad +
+                    "px " +
+                    props.pad +
+                    "px " +
+                    (parseInt(props.pad) + parseInt(props.holeSpace)) +
+                    "px",
+                }
+          }
+        >
+          {blocks.map((block) => (
+            <div key={block.id}>{findBlock(block.blockType, block.id)}</div>
+          ))}
+        </div>
       </div>
     </div>
   );

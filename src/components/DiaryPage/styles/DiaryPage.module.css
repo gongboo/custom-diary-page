@@ -5,6 +5,7 @@
   height: var(--pageHeight-size); /* 700px; 141vw;*/
   background-color: var(--diaryPage-color);
   box-sizing: border-box;
+  /* overflow: hidden; */
 
   /* display: grid;
   place-items: center; */

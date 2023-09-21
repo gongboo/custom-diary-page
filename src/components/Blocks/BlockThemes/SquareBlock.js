@@ -33,10 +33,10 @@ const BoxComponent = (props) => {
       >
         <div
           style={{
-            height: thisBlock.height, // "calc(var(--pageHeight-size)*0.1*" + thisBlock.height + ")",
+            height: thisBlock.height,
             boxSizing: "border-box",
             // width: "100%",
-            border: "calc(var(--pageWidth-size)*0.004) solid " + color,
+            border: "1px solid " + color,
             borderRadius: thisBlock.isRound && "10px",
             //transition: "all ease 0.5s 0s",
           }}
