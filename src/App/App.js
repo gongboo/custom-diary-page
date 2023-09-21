@@ -162,13 +162,16 @@ function App() {
         changeHoleDirection={changeHoleDirection}
       />
       <div style={{ height: "10px" }} />
-      <div id="capture">
-        <ComponentToPrint
-          ref={componentRef}
-          pad={padding}
-          holeSpace={holeSpace}
-          holeDirection={holeDirection}
-        />
+      <div style={{ overflow: "hidden" }}>
+        <div style={{ height: "10px" }}></div>
+        <div id="capture">
+          <ComponentToPrint
+            ref={componentRef}
+            pad={padding}
+            holeSpace={holeSpace}
+            holeDirection={holeDirection}
+          />
+        </div>
       </div>
       <button
         style={{
