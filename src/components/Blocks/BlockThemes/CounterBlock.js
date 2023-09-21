@@ -11,6 +11,8 @@ import {
   incCounter,
   decCounter,
   deleteBlock,
+  incStyleNum,
+  decStyleNum,
 } from "../../../ReduxFiles/actions";
 import { getColor } from "../common";
 
@@ -21,24 +23,63 @@ const CounterComponent = (props) => {
     state.find((block) => block.id === props.id)
   );
   const color = getColor(thisBlock.color);
+  let styleNum = thisBlock.style;
+  console.log(styleNum);
   const oneParticle = (num) => {
-    return (
-      <div
-        style={{
-          border: "solid " + color,
-          padding: "5px",
-          width: "20px",
-          height: "20px",
-          color: color,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          // borderRadius: "100%",
-        }}
-      >
-        {num}
-      </div>
-    );
+    if (thisBlock.style === 0) {
+      return (
+        <div
+          style={{
+            border: "solid " + color,
+            padding: "5px",
+            width: "20px",
+            height: "20px",
+            color: color,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          {num}
+        </div>
+      );
+    } else if (thisBlock.style === 1) {
+      return (
+        <div
+          style={{
+            border: "solid " + color,
+            padding: "5px",
+            width: "20px",
+            height: "20px",
+            color: color,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            borderRadius: "100%",
+          }}
+        >
+          {num}
+        </div>
+      );
+    } else if (thisBlock.style === 2) {
+      return (
+        <div
+          style={{
+            border: "solid " + color,
+            padding: "5px",
+            width: "20px",
+            height: "20px",
+            color: color,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            borderRadius: "10%",
+          }}
+        >
+          {num}
+        </div>
+      );
+    }
   };
 
   return (
@@ -60,6 +101,9 @@ const CounterComponent = (props) => {
       </div>
       {isFocused && (
         <AdjustmentBar onDelete={props.onDelete} id={props.id}>
+          <AdjustButton action={incStyleNum} label="<" id={props.id} />
+          스타일
+          <AdjustButton action={decStyleNum} label=">" id={props.id} />
           <AdjustButton action={incCounter} label="+" id={props.id} />
           갯수
           <AdjustButton action={decCounter} label="-" id={props.id} />

@@ -216,6 +216,28 @@ const blocksReducer = (state = blocks, action) => {
             }
           : block
       );
+    case "INCREASE_STYLE_NUM":
+      return state.map((block) =>
+        block.id === action.payload.id
+          ? {
+              ...block,
+              style: (block.style + 1) % block.totalNumStyle,
+            }
+          : block
+      );
+
+    case "DECREASE_STYLE_NUM":
+      return state.map((block) =>
+        block.id === action.payload.id
+          ? {
+              ...block,
+              style:
+                (((block.style - 1) % block.totalNumStyle) +
+                  block.totalNumStyle) %
+                block.totalNumStyle,
+            }
+          : block
+      );
 
     default:
       return state;

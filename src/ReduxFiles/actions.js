@@ -114,6 +114,8 @@ export const addCounterBlock = (blockTypeStr) => {
       height: 10,
       color: 0.3,
       counter: 15,
+      style: 0,
+      totalNumStyle: 3,
     },
   };
 };
@@ -305,6 +307,24 @@ export const changeFont = (id, font) => {
     payload: {
       id: id,
       font: font,
+    },
+  };
+};
+
+export const incStyleNum = (id) => {
+  return {
+    type: "INCREASE_STYLE_NUM",
+    payload: {
+      id: id,
+    },
+  };
+};
+
+export const decStyleNum = (id) => {
+  return {
+    type: "DECREASE_STYLE_NUM",
+    payload: {
+      id: id,
     },
   };
 };
