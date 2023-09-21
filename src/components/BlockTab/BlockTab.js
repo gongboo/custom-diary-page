@@ -149,7 +149,7 @@ function ComponentTab(props) {
 
   const tabContent = {
     tab1: (
-      <div style={{ overflow: "scroll" }}>
+      <div style={{ height: "600px" }}>
         <DotgridCreator />
         <GridCreator />
         <LineCreator />
@@ -239,14 +239,14 @@ function ComponentTab(props) {
         onClick={() => setTabState("tab1")}
         // style={tabState === "tab1" ? { background: "var(--sub1-color)" } : {}}
       >
-        simple
+        blocks
       </button>
       <button
         className={tabState === "tab2" ? "btn-normal" : "btn-unselect"}
         onClick={() => setTabState("tab2")}
         // style={tabState === "tab2" ? { background: "var(--sub1-color)" } : {}}
       >
-        complex
+        layouts
       </button>
       <button
         className={tabState === "tab3" ? "btn-normal" : "btn-unselect"}
@@ -256,7 +256,9 @@ function ComponentTab(props) {
         {/* <MdSettingsOverscan /> */}
         page setting
       </button>
-      {tabContent[tabState]}
+      <div style={{ height: "500px", overflow: "auto" }}>
+        {tabContent[tabState]}
+      </div>
     </div>
   );
 }
