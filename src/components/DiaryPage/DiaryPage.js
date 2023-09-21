@@ -18,19 +18,19 @@ import {
   addCounterBlock,
 } from "../../ReduxFiles/actions";
 
-import LineComponent from "../Blocks/SimpleBlocks/LineBlock";
-import BoxComponent from "../Blocks/SimpleBlocks/SquareBlock";
-import DotgridComponent from "../Blocks/SimpleBlocks/DotgridBlock";
-import GridComponent from "../Blocks/SimpleBlocks/GridBlock";
-import TextComponent from "../Blocks/SimpleBlocks/TextBlock";
-import RuledComponent from "../Blocks/SimpleBlocks/RuledBlock";
-import ChecklistComponent from "../Blocks/ComplexBlocks/ChecklistBlock";
-import CircularDailyComponent from "../Blocks/ComplexBlocks/CircularDailyBlock";
-import DoubleCircularDailyComponent from "../Blocks/ComplexBlocks/DoubleCircularDailyBlock";
-import MonthTableComponent from "../Blocks/ComplexBlocks/MonthTableBlock";
-import PictureDailyComponent from "../Blocks/ComplexBlocks/PictureDailyBlock";
+import LineComponent from "../Blocks/BlockThemes/LineBlock";
+import BoxComponent from "../Blocks/BlockThemes/SquareBlock";
+import DotgridComponent from "../Blocks/BlockThemes/DotgridBlock";
+import GridComponent from "../Blocks/BlockThemes/GridBlock";
+import TextComponent from "../Blocks/BlockThemes/TextBlock";
+import RuledComponent from "../Blocks/BlockThemes/RuledBlock";
+import ChecklistComponent from "../Blocks/BlockThemes/ChecklistBlock";
+import CircularDailyComponent from "../Blocks/BlockThemes/CircularDailyBlock";
+import DoubleCircularDailyComponent from "../Blocks/BlockThemes/DoubleCircularDailyBlock";
+import MonthTableComponent from "../Blocks/BlockThemes/MonthTableBlock";
+import PictureDailyComponent from "../Blocks/BlockThemes/PictureDailyBlock";
 // import ProgressComponent from "../Blocks/progressComponent";
-import CounterComponent from "../Blocks/ComplexBlocks/CounterBlock";
+import CounterComponent from "../Blocks/BlockThemes/CounterBlock";
 import { v4 as uuidv4 } from "uuid";
 
 const ComponentToPrint = React.forwardRef((props, ref) => {
@@ -95,14 +95,6 @@ const ComponentToPrint = React.forwardRef((props, ref) => {
     }
   }
 
-  // function onDelete(deletedWidgetId) {
-  //   console.log("ondelete the id is " + deletedWidgetId);
-  //   console.log(widgets);
-  //   setWidgets(() => [
-  //     widgets.filter((widget) => widget.id !== deletedWidgetId),
-  //   ]);
-  // }
-
   function findBlock(str, id) {
     const componentMap = {
       line: () => <LineComponent id={id} />,
@@ -161,12 +153,6 @@ const ComponentToPrint = React.forwardRef((props, ref) => {
               }
         }
       >
-        {/* {widgets.map((widget, index) => (
-          <div className={styles.diary_page_div} key={index}>
-            {widget.component}
-          </div>
-        ))}
-        redux */}
         {blocks.map((block) => (
           <div key={block.id}>{findBlock(block.blockType, block.id)}</div>
         ))}

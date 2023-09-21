@@ -28,7 +28,12 @@ const CounterComponent = (props) => {
           border: "solid " + color,
           padding: "5px",
           width: "20px",
+          height: "20px",
           color: color,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          // borderRadius: "100%",
         }}
       >
         {num}

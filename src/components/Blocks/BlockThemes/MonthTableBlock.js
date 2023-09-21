@@ -63,7 +63,7 @@ const MonthTableComponent = (props) => {
         <tr
           style={{
             borderCollapse: "collapse",
-            border: "1px gray solid",
+            border: "1px solid " + color,
             height: thisBlock.nameSpaceHeight + "px",
             width: "100%",
           }}
@@ -75,7 +75,7 @@ const MonthTableComponent = (props) => {
         <tr
           style={{
             borderCollapse: "collapse",
-            border: "1px gray solid",
+            border: "1px solid " + color,
             height: thisBlock.contentHeight + "px",
             width: "100%",
           }}
@@ -127,29 +127,7 @@ const MonthTableComponent = (props) => {
           <AdjustButton action={incCol} label="+" id={props.id} />
           세로
           <AdjustButton action={decCol} label="-" id={props.id} />
-          <AdjustButton
-            action={deleteBlock}
-            label="x"
-            id={props.id}
-            // styles={{
-            //   backgroundColor: "red",
-            // }}
-          />
-          {/* <button onMouseDown={increaseNameSpaceHeight}>+</button>
-          높이1
-          <button onMouseDown={decreaseNameSpaceHeight}>-</button>
-          <button onMouseDown={increaseContentHeight}>+</button>
-          높이2
-          <button onMouseDown={decreaseContentHeight}>-</button>
-          <button onMouseDown={increaseColorLightness}>+</button>
-          색깔
-          <button onMouseDown={decreaseColorLightness}>-</button>
-          <button onMouseDown={increaseRowNum}>+</button>
-          가로
-          <button onMouseDown={decreaseRowNum}>-</button>
-          <button onMouseDown={increaseColNum}>+</button>
-          세로
-          <button onMouseDown={decreaseColNum}>-</button> */}
+          <AdjustButton action={deleteBlock} label="x" id={props.id} />
         </AdjustmentBar>
       )}
     </DiaryComponent>

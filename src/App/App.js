@@ -276,9 +276,16 @@ function App() {
               onClick={() => {
                 setModalInactive();
               }}
-              style={{ position: "absolute", top: "5%", left: "90%" }}
+              style={{
+                position: "absolute",
+                top: "5%",
+                left: "90%",
+                backgroundColor: "var(--main-color)",
+                borderStyle: "none",
+                color: "var(--diaryPage-color)",
+              }}
             >
-              x
+              X
             </button>
 
             <div style={{ display: "block" }}>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { useFocus } from "../AdjustmentBar/hooks/adjustmentHooks";
 import DiaryComponent from "../BlockWrapper";
@@ -15,7 +15,7 @@ import {
 import { getColor } from "../common";
 import styles from "../styles/Block.module.css";
 
-const DoubleCircularDailyComponent = (props) => {
+const CircularDailyComponent = (props) => {
   const [isFocused, setIsFocused, handleBlur] = useFocus();
 
   const thisBlock = useSelector((state) =>
@@ -24,7 +24,7 @@ const DoubleCircularDailyComponent = (props) => {
   const color = getColor(thisBlock.color);
 
   const scaleMark = () => {
-    const numberOfItems = 12;
+    const numberOfItems = 24;
     const items = [];
 
     for (let i = 0; i < numberOfItems; i++) {
@@ -39,7 +39,7 @@ const DoubleCircularDailyComponent = (props) => {
             left: "50%",
             transform:
               "translate(-50%, -50%) rotate(" +
-              30 * i +
+              15 * i +
               "deg) translate(" +
               thisBlock.height / 2 +
               "px, 0) ",
@@ -49,6 +49,7 @@ const DoubleCircularDailyComponent = (props) => {
     }
     return <div>{items}</div>;
   };
+
   return (
     <DiaryComponent
       // drag={drag}
@@ -59,7 +60,8 @@ const DoubleCircularDailyComponent = (props) => {
         style={{
           width: "100%",
           display: "flex",
-          justifyContent: "space-around",
+          justifyContent: "center",
+          alignItems: "center",
         }}
       >
         <div
@@ -68,7 +70,7 @@ const DoubleCircularDailyComponent = (props) => {
             height: thisBlock.height,
             width: thisBlock.height,
             borderRadius: "50%",
-            border: "solid " + color,
+            border: "1px solid " + color,
             display: "inline-block",
           }}
         >
@@ -76,37 +78,12 @@ const DoubleCircularDailyComponent = (props) => {
           <div
             style={{
               position: "absolute",
-              height: "1px",
-              width: "1px",
+              height: "2px",
+              width: "2px",
               bottom: "50%",
               left: "50%",
               borderRadius: "50%",
-              border: "solid " + color,
-              backgroundColor: color,
-              transform: "translate(-50%, -50%)",
-            }}
-          ></div>
-        </div>
-        <div
-          style={{
-            position: "relative",
-            height: thisBlock.height,
-            width: thisBlock.height,
-            borderRadius: "50%",
-            border: "solid " + color,
-            display: "inline-block",
-          }}
-        >
-          {scaleMark()}
-          <div
-            style={{
-              position: "absolute",
-              height: "1px",
-              width: "1px",
-              bottom: "50%",
-              left: "50%",
-              borderRadius: "50%",
-              border: "solid " + color,
+              // border: "solid " + color,
               backgroundColor: color,
               transform: "translate(-50%, -50%)",
             }}
@@ -114,7 +91,7 @@ const DoubleCircularDailyComponent = (props) => {
         </div>
       </div>{" "}
       {isFocused && (
-        <AdjustmentBar onDelete={props.onDelete} id={props.id}>
+        <AdjustmentBar>
           <AdjustButton action={incHeight} label="+" id={props.id} />
           높이
           <AdjustButton action={decHeight} label="-" id={props.id} />
@@ -128,4 +105,4 @@ const DoubleCircularDailyComponent = (props) => {
   );
 };
 
-export default DoubleCircularDailyComponent;
+export default CircularDailyComponent;

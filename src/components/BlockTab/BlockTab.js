@@ -149,13 +149,20 @@ function ComponentTab(props) {
 
   const tabContent = {
     tab1: (
-      <div>
+      <div style={{ overflow: "scroll" }}>
         <DotgridCreator />
         <GridCreator />
         <LineCreator />
         <SquareCreator />
         <TextCreator />
         <RuledCreator />
+        <MonthTableCreator />
+        {/* <PictureDiaryCreator /> */}
+        {/* <ProgressBarCreator /> */}
+        <ChecklistCreator />
+        <CounterCreator />
+        <CircularDailyCreator />
+        <DoubleCircularDailyCreator />
       </div>
     ),
     tab2: (
