@@ -2,33 +2,40 @@ import React, { useState } from "react";
 
 const SiteLogo = () => {
   return (
-    <div
+    <a
+      href="/"
       style={{
-        display: "grid",
-        justifyContent: "center",
-        height: "fit-content",
+        textDecoration: "none",
       }}
     >
-      <h1
-        style={{
-          justifySelf: "center",
-          color: "var(--diaryPage-color)",
-        }}
-      >
-        CUSTOM DIARY PAGE
-      </h1>
       <div
         style={{
-          alignSelf: "center",
-          justifySelf: "center",
-          border: "solid var(--diaryPage-color)",
-          position: "absolute",
-          width: "400px",
-          height: "50px",
-          borderRadius: "80%",
+          display: "grid",
+          justifyContent: "center",
+          height: "fit-content",
         }}
-      ></div>
-    </div>
+      >
+        <h1
+          style={{
+            justifySelf: "center",
+            color: "var(--diaryPage-color)",
+          }}
+        >
+          CUSTOM DIARY PAGE
+        </h1>
+        <div
+          style={{
+            alignSelf: "center",
+            justifySelf: "center",
+            border: "solid var(--diaryPage-color)",
+            position: "absolute",
+            width: "400px",
+            height: "50px",
+            borderRadius: "80%",
+          }}
+        ></div>
+      </div>
+    </a>
   );
 };
 

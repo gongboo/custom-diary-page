@@ -8,6 +8,7 @@ import ComponentToPrint from "../components/DiaryPage/DiaryPage";
 
 import { PiChatTextLight, PiClipboardTextLight } from "react-icons/pi";
 import SiteLogo from "./SiteLogo";
+import Footer from "./Footer";
 
 function App() {
   const componentRef = useRef();
@@ -304,6 +305,8 @@ function App() {
           </div>
         </div>
       )}
+      <div style={{ height: "20px" }}></div>
+      <Footer />
     </div>
   );
 }
