@@ -6,9 +6,8 @@ import domtoimage from "dom-to-image";
 import ComponentTab from "../components/BlockTab/BlockTab";
 import ComponentToPrint from "../components/DiaryPage/DiaryPage";
 
-import { useReactToPrint } from "react-to-print";
-
 import { PiChatTextLight, PiClipboardTextLight } from "react-icons/pi";
+import SiteLogo from "./SiteLogo";
 
 function App() {
   const componentRef = useRef();
@@ -95,7 +94,7 @@ function App() {
       ctx.rotate((90 * Math.PI) / 180);
       ctx.drawImage(img, -img.width / 2, -img.height / 2);
 
-      callback(canvas.toDataURL()); // 회전된 이미지의 Data URL을 반환
+      callback(canvas.toDataURL());
     };
   };
 
@@ -126,33 +125,8 @@ function App() {
           top: 30,
         }}
       /> */}
-      <div
-        style={{
-          display: "grid",
-          justifyContent: "center",
-          height: "fit-content",
-        }}
-      >
-        <h1
-          style={{
-            justifySelf: "center",
-            color: "var(--diaryPage-color)",
-          }}
-        >
-          CUSTOM DIARY PAGE
-        </h1>
-        <div
-          style={{
-            alignSelf: "center",
-            justifySelf: "center",
-            border: "solid var(--diaryPage-color)",
-            position: "absolute",
-            width: "400px",
-            height: "50px",
-            borderRadius: "80%",
-          }}
-        ></div>
-      </div>
+      <SiteLogo />
+
       <ComponentTab
         changePad={changePad}
         pad={padding}
@@ -325,7 +299,7 @@ function App() {
                 />
                 <label for="2x2">2x2</label>
               </div>
-              <ShowPrintSampleButton contentRef={test} />
+              <PrintButton contentRef={test} />
             </div>
           </div>
         </div>
@@ -334,37 +308,138 @@ function App() {
   );
 }
 
-const ShowPrintSampleButton = ({ contentRef }) => {
-  const handlePrint = useReactToPrint({
-    content: function () {
-      const clonedNode = contentRef.current.cloneNode(true);
-      clonedNode.querySelector("img").style.width = "100%";
-      return clonedNode;
-    },
-  });
+// const PrintModal = () => {
+//   return (
+//     <div
+//       style={{
+//         width: "300px",
+//         height: "300px",
+//         backgroundColor: "var(--main-color)",
+//         zIndex: 2,
+//         position: "fixed",
+//         justifyContent: "center",
+//         top: "50%",
+//         left: "50%",
+//         transform: "translate(-50%, -50%)",
+//         padding: "10px",
+//       }}
+//     >
+//       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
+//         <div id="sample" ref={test} style={{}}>
+//           {printPageStyle === "1x1" && (
+//             <img
+//               src={imageUrl}
+//               style={{ width: "100%", display: "block", margin: 0 }}
+//               alt="Generated content"
+//             />
+//           )}
+//           {printPageStyle === "2x1" && (
+//             <div>
+//               <img
+//                 src={imageUrl90}
+//                 style={{
+//                   width: "100%",
+//                   display: "block",
+//                   transformOrigin: "rotate(90deg)",
+//                   margin: 0,
+//                 }}
+//                 alt="Generated content"
+//               />
+//               <img
+//                 src={imageUrl90}
+//                 style={{
+//                   width: "100%",
+//                   display: "block",
+//                   transformOrigin: "rotate(90deg)",
+//                   margin: 0,
+//                 }}
+//                 alt="Generated content"
+//               />
+//             </div>
+//           )}
+//           {printPageStyle === "2x2" && (
+//             <>
+//               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
+//                 <img
+//                   src={imageUrl}
+//                   style={{ width: "100%", display: "block", margin: 0 }}
+//                   alt="Generated content"
+//                 />
+//                 <img
+//                   src={imageUrl}
+//                   style={{ width: "100%", display: "block", margin: 0 }}
+//                   alt="Generated content"
+//                 />
+//                 <img
+//                   src={imageUrl}
+//                   style={{ width: "100%", display: "block", margin: 0 }}
+//                   alt="Generated content"
+//                 />
+//                 <img
+//                   src={imageUrl}
+//                   style={{ width: "100%", display: "block", margin: 0 }}
+//                   alt="Generated content"
+//                 />
+//               </div>
+//             </>
+//           )}
+//         </div>
 
-  return (
-    <button
-      style={{
-        margin: "10px",
-        width: "fit-content",
-        padding: "10px 20px",
-        borderRadius: "30% 0%",
-        alignSelf: "center",
-        justifySelf: "center",
-        fontFamily: '"Noto Serif KR", serif',
-        fontSize: "2em",
-        backgroundColor: "var(--main-color)",
-        borderStyle: "solid",
-        borderColor: "var(--diaryPage-color)",
-        color: "var(--diaryPage-color)",
-        borderWidth: "1px",
-      }}
-      onClick={handlePrint}
-    >
-      Print
-    </button>
-  );
-};
+//         <button
+//           onClick={() => {
+//             setModalInactive();
+//           }}
+//           style={{
+//             position: "absolute",
+//             top: "5%",
+//             left: "90%",
+//             backgroundColor: "var(--main-color)",
+//             borderStyle: "none",
+//             color: "var(--diaryPage-color)",
+//           }}
+//         >
+//           X
+//         </button>
+
+//         <div style={{ display: "block" }}>
+//           <div>
+//             <input
+//               type="radio"
+//               id="1x1"
+//               name="style"
+//               value="1x1"
+//               checked={printPageStyle === "1x1"}
+//               onChange={(e) => setPrintPageStyle(e.target.value)}
+//             />
+//             <label for="1x1">1x1</label>
+//           </div>
+//           <div>
+//             <input
+//               type="radio"
+//               id="2x1"
+//               name="style"
+//               value="2x1"
+//               checked={printPageStyle === "2x1"}
+//               onChange={(e) => setPrintPageStyle(e.target.value)}
+//             />
+//             <label for="2x1">2x1</label>
+//           </div>
+//           <div>
+//             <input
+//               type="radio"
+//               id="2x2"
+//               name="style"
+//               value="2x2"
+//               checked={printPageStyle === "2x2"}
+//               onChange={(e) => setPrintPageStyle(e.target.value)}
+//             />
+//             <label for="2x2">2x2</label>
+//           </div>
+//           <PrintButton contentRef={test} />
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
 
 export default App;

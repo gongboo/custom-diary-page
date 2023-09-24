@@ -149,7 +149,7 @@ function ComponentTab(props) {
 
   const tabContent = {
     tab1: (
-      <div style={{ height: "600px" }}>
+      <div style={{ height: "200px" }}>
         <DotgridCreator />
         <GridCreator />
         <LineCreator />
@@ -165,23 +165,30 @@ function ComponentTab(props) {
         <DoubleCircularDailyCreator />
       </div>
     ),
-    tab2: (
-      <div>
-        <MonthTableCreator />
-        <PictureDiaryCreator />
-        {/* <ProgressBarCreator /> */}
-        <ChecklistCreator />
-        <CounterCreator />
-        <CircularDailyCreator />
-        <DoubleCircularDailyCreator />
-      </div>
-    ),
+    tab2: <div>준비중...</div>,
     tab3: (
       <div>
         <div style={{ display: "block" }}>
           <div style={{ display: "inline" }}>타공자리 위치 </div>
           {/* <input type="checkbox" id="sideHoleSpace" name="sideHoleSpace" /> */}
-
+          <label>
+            <input
+              type="radio"
+              value="top"
+              checked={props.holeDirection === "top"}
+              onChange={props.changeHoleDirection}
+            />
+            top
+          </label>
+          {/* <label>
+            <input
+              type="radio"
+              value="down"
+              checked={props.holeDirection === "down"}
+              onChange={props.changeHoleDirection}
+            />
+            down
+          </label> */}
           <label>
             <input
               type="radio"
@@ -195,11 +202,11 @@ function ComponentTab(props) {
           <label>
             <input
               type="radio"
-              value="top"
-              checked={props.holeDirection === "top"}
+              value="right"
+              checked={props.holeDirection === "right"}
               onChange={props.changeHoleDirection}
             />
-            top
+            right
           </label>
         </div>
         <div>
@@ -256,7 +263,7 @@ function ComponentTab(props) {
         {/* <MdSettingsOverscan /> */}
         page setting
       </button>
-      <div style={{ height: "500px", overflow: "auto" }}>
+      <div style={{ height: "110px", overflow: "auto" }}>
         {tabContent[tabState]}
       </div>
     </div>

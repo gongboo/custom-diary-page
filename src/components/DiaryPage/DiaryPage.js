@@ -126,8 +126,8 @@ const ComponentToPrint = React.forwardRef((props, ref) => {
       <div
         ref={drop}
         className={styles.diary_page + " diary_page"}
-        style={
-          props.holeDirection === "top"
+        style={{
+          ...(props.holeDirection === "top"
             ? {
                 padding:
                   parseInt(props.pad) +
@@ -150,8 +150,47 @@ const ComponentToPrint = React.forwardRef((props, ref) => {
                   "px " +
                   (parseInt(props.pad) + parseInt(props.holeSpace)) +
                   "px",
+              }),
+          ...(props.holeDirection === "down"
+            ? {
+                padding:
+                  props.pad +
+                  "px " +
+                  props.pad +
+                  "px " +
+                  (parseInt(props.pad) + parseInt(props.holeSpace)) +
+                  "px " +
+                  props.pad +
+                  "px ",
               }
-        }
+            : {}),
+          ...(props.holeDirection === "left"
+            ? {
+                padding:
+                  props.pad +
+                  "px " +
+                  props.pad +
+                  "px " +
+                  props.pad +
+                  "px " +
+                  (parseInt(props.pad) + parseInt(props.holeSpace)) +
+                  "px",
+              }
+            : {}),
+          ...(props.holeDirection === "right"
+            ? {
+                padding:
+                  props.pad +
+                  "px " +
+                  (parseInt(props.pad) + parseInt(props.holeSpace)) +
+                  "px " +
+                  props.pad +
+                  "px " +
+                  props.pad +
+                  "px ",
+              }
+            : {}),
+        }}
       >
         {blocks.map((block) => (
           <div key={block.id}>{findBlock(block.blockType, block.id)}</div>

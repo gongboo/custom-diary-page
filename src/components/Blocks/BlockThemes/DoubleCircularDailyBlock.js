@@ -69,7 +69,7 @@ const DoubleCircularDailyComponent = (props) => {
             width: thisBlock.height,
             borderRadius: "50%",
             border: "1px solid " + color,
-            display: "inline-block",
+            boxSizing: "border-box",
           }}
         >
           {scaleMark()}

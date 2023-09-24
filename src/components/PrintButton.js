@@ -3,12 +3,15 @@ import { useReactToPrint } from "react-to-print";
 
 const PrintButton = ({ contentRef }) => {
   const handlePrint = useReactToPrint({
-    content: () => contentRef.current,
+    content: function () {
+      const clonedNode = contentRef.current.cloneNode(true);
+      clonedNode.querySelector("img").style.width = "100%";
+      return clonedNode;
+    },
   });
 
   return (
     <button
-      onClick={handlePrint}
       style={{
         margin: "10px",
         width: "fit-content",
@@ -19,12 +22,12 @@ const PrintButton = ({ contentRef }) => {
         fontFamily: '"Noto Serif KR", serif',
         fontSize: "2em",
         backgroundColor: "var(--main-color)",
-        // border: "soild var(--diaryPage-color)",
         borderStyle: "solid",
         borderColor: "var(--diaryPage-color)",
         color: "var(--diaryPage-color)",
         borderWidth: "1px",
       }}
+      onClick={handlePrint}
     >
       Print
     </button>

@@ -67,11 +67,11 @@ const CircularDailyComponent = (props) => {
         <div
           style={{
             position: "relative",
+            boxSizing: "border-box",
             height: thisBlock.height,
             width: thisBlock.height,
             borderRadius: "50%",
             border: "1px solid " + color,
-            display: "inline-block",
           }}
         >
           {scaleMark()}
