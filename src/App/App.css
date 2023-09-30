@@ -1,0 +1,8 @@
+@media print {
+  body,
+  #sample {
+    margin: 0 !important;
+    padding: 0 !important;
+    /* 추가적인 스타일 */
+  }
+}

@@ -4,7 +4,7 @@ import PrintButton from "../components/PrintButton";
 import html2canvas from "html2canvas";
 import domtoimage from "dom-to-image";
 import ComponentTab from "../components/BlockTab/BlockTab";
-import ComponentToPrint from "../components/DiaryPage/DiaryPage";
+import DiaryPage from "../components/DiaryPage/DiaryPage";
 
 import { PiChatTextLight, PiClipboardTextLight } from "react-icons/pi";
 import SiteLogo from "./SiteLogo";
@@ -12,7 +12,7 @@ import Footer from "./Footer";
 
 function App() {
   const componentRef = useRef();
-  const test = useRef();
+  const samplePrintRef = useRef();
 
   const [padding, setPadding] = useState(19);
   const [holeSpace, setHoleSpace] = useState(0);
@@ -140,7 +140,7 @@ function App() {
       <div style={{ overflow: "hidden" }}>
         <div style={{ height: "10px" }}></div>
         <div id="capture">
-          <ComponentToPrint
+          <DiaryPage
             ref={componentRef}
             pad={padding}
             holeSpace={holeSpace}
@@ -187,12 +187,23 @@ function App() {
             padding: "10px",
           }}
         >
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
-            <div id="sample" ref={test} style={{}}>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              margin: 0,
+              padding: 0,
+            }}
+          >
+            <div
+              id="sample"
+              ref={samplePrintRef}
+              // style={{ margin: 0, padding: 0, width: "100%" }}
+            >
               {printPageStyle === "1x1" && (
                 <img
                   src={imageUrl}
-                  style={{ width: "100%", display: "block", margin: 0 }}
+                  style={{ width: "100%", margin: 0 }}
                   alt="Generated content"
                 />
               )}
@@ -300,7 +311,7 @@ function App() {
                 />
                 <label for="2x2">2x2</label>
               </div>
-              <PrintButton contentRef={test} />
+              <PrintButton contentRef={samplePrintRef} />
             </div>
           </div>
         </div>

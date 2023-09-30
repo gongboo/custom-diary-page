@@ -33,7 +33,7 @@ import PictureDailyComponent from "../Blocks/BlockThemes/PictureDailyBlock";
 import CounterComponent from "../Blocks/BlockThemes/CounterBlock";
 import { v4 as uuidv4 } from "uuid";
 
-const ComponentToPrint = React.forwardRef((props, ref) => {
+const DiaryPage = React.forwardRef((props, ref) => {
   const [{ isOver }, drop] = useDrop({
     accept: ItemTypes.CARD,
     drop: (item) => onDrop(item),
@@ -122,7 +122,7 @@ const ComponentToPrint = React.forwardRef((props, ref) => {
   }
 
   return (
-    <div ref={ref}>
+    <div ref={ref} style={{ margin: 0, padding: 0 }}>
       <div
         ref={drop}
         className={styles.diary_page + " diary_page"}
@@ -140,17 +140,7 @@ const ComponentToPrint = React.forwardRef((props, ref) => {
                   props.pad +
                   "px ",
               }
-            : {
-                padding:
-                  props.pad +
-                  "px " +
-                  props.pad +
-                  "px " +
-                  props.pad +
-                  "px " +
-                  (parseInt(props.pad) + parseInt(props.holeSpace)) +
-                  "px",
-              }),
+            : {}),
           ...(props.holeDirection === "down"
             ? {
                 padding:
@@ -200,4 +190,4 @@ const ComponentToPrint = React.forwardRef((props, ref) => {
   );
 });
 
-export default ComponentToPrint;
+export default DiaryPage;

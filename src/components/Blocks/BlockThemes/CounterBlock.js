@@ -31,9 +31,12 @@ const CounterComponent = (props) => {
         <div
           style={{
             border: "solid " + color,
-            padding: "5px",
-            width: "20px",
-            height: "20px",
+            // padding: "5px",
+            // width: "20px",
+            // height: "20px",
+            // padding: "5px",
+            width: "8%",
+            aspectRatio: "1 / 1",
             color: color,
             display: "flex",
             alignItems: "center",
@@ -48,9 +51,12 @@ const CounterComponent = (props) => {
         <div
           style={{
             border: "solid " + color,
-            padding: "5px",
-            width: "20px",
-            height: "20px",
+            // padding: "5px",
+            // width: "20px",
+            // height: "20px",
+            // padding: "5px",
+            width: "8%",
+            aspectRatio: "1 / 1",
             color: color,
             display: "flex",
             alignItems: "center",
@@ -66,9 +72,11 @@ const CounterComponent = (props) => {
         <div
           style={{
             border: "solid " + color,
-            padding: "5px",
-            width: "20px",
-            height: "20px",
+            // padding: "5px",
+            width: "8%",
+            aspectRatio: "1 / 1",
+            // width: "20px",
+            // height: "20px",
             color: color,
             display: "flex",
             alignItems: "center",

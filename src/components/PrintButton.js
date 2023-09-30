@@ -5,7 +5,11 @@ const PrintButton = ({ contentRef }) => {
   const handlePrint = useReactToPrint({
     content: function () {
       const clonedNode = contentRef.current.cloneNode(true);
-      clonedNode.querySelector("img").style.width = "100%";
+      // clonedNode.querySelector("img").style.width = "100%";
+      // clonedNode.style.width = "100%";
+      // clonedNode.style.margin = 0;
+      // clonedNode.style.padding = 0;
+
       return clonedNode;
     },
   });
