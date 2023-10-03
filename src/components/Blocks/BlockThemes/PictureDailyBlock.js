@@ -18,7 +18,8 @@ import {
 } from "../../../ReduxFiles/actions";
 import { getColor } from "../common";
 import styles from "../styles/Block.module.css";
-
+import IncDecGroup from "../AdjustmentBar/IncDecGroup";
+//이거 사용 안하고 있음
 const PictureDailyComponent = (props) => {
   // const { isDragging, drag } = useDraggable();
   const [isFocused, setIsFocused, handleBlur] = useFocus();

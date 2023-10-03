@@ -15,6 +15,7 @@ import {
   decStyleNum,
 } from "../../../ReduxFiles/actions";
 import { getColor } from "../common";
+import IncDecGroup from "../AdjustmentBar/IncDecGroup";
 
 const CounterComponent = (props) => {
   const [isFocused, setIsFocused, handleBlur] = useFocus();
@@ -30,7 +31,7 @@ const CounterComponent = (props) => {
       return (
         <div
           style={{
-            border: "solid " + color,
+            border: "solid 1px " + color,
             // padding: "5px",
             // width: "20px",
             // height: "20px",
@@ -50,7 +51,7 @@ const CounterComponent = (props) => {
       return (
         <div
           style={{
-            border: "solid " + color,
+            border: "solid 1px " + color,
             // padding: "5px",
             // width: "20px",
             // height: "20px",
@@ -71,7 +72,7 @@ const CounterComponent = (props) => {
       return (
         <div
           style={{
-            border: "solid " + color,
+            border: "solid 1px " + color,
             // padding: "5px",
             width: "8%",
             aspectRatio: "1 / 1",
@@ -112,12 +113,18 @@ const CounterComponent = (props) => {
           <AdjustButton action={incStyleNum} label="<" id={props.id} />
           스타일
           <AdjustButton action={decStyleNum} label=">" id={props.id} />
-          <AdjustButton action={incCounter} label="+" id={props.id} />
-          갯수
-          <AdjustButton action={decCounter} label="-" id={props.id} />
-          <AdjustButton action={incColor} label="+" id={props.id} />
-          색깔
-          <AdjustButton action={decColor} label="-" id={props.id} />
+          <IncDecGroup
+            inc={incCounter}
+            dec={decCounter}
+            label="갯수"
+            id={props.id}
+          />
+          <IncDecGroup
+            inc={incColor}
+            dec={decColor}
+            label="색깔"
+            id={props.id}
+          />
           <AdjustButton action={deleteBlock} label="x" id={props.id} />
         </AdjustmentBar>
       )}

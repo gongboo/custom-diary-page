@@ -14,6 +14,7 @@ import {
 } from "../../../ReduxFiles/actions";
 import { getColor } from "../common";
 import styles from "../styles/Block.module.css";
+import IncDecGroup from "../AdjustmentBar/IncDecGroup";
 
 const ChecklistComponent = (props) => {
   // const { isDragging, drag } = useDraggable();
@@ -36,12 +37,19 @@ const ChecklistComponent = (props) => {
 
       {isFocused && (
         <AdjustmentBar>
-          <AdjustButton action={incChecklist} label="+" id={props.id} />
-          추가
-          <AdjustButton action={decChecklist} label="-" id={props.id} />
-          <AdjustButton action={incColor} label="+" id={props.id} />
-          색깔
-          <AdjustButton action={decColor} label="-" id={props.id} />
+          <IncDecGroup
+            inc={incChecklist}
+            dec={decChecklist}
+            label="추가"
+            id={props.id}
+          />
+          <IncDecGroup
+            inc={incColor}
+            dec={decColor}
+            label="색깔"
+            id={props.id}
+          />
+
           <AdjustButton action={deleteBlock} label="x" id={props.id} />
         </AdjustmentBar>
       )}

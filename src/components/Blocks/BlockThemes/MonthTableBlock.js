@@ -13,6 +13,8 @@ import {
   decRow,
   incCol,
   decCol,
+  incHeight,
+  decHeight,
   incNameSpaceHeight,
   decNameSpaceHeight,
   incContentHeight,
@@ -20,6 +22,7 @@ import {
 } from "../../../ReduxFiles/actions";
 import { getColor } from "../common";
 import styles from "../styles/Block.module.css";
+import IncDecGroup from "../AdjustmentBar/IncDecGroup";
 
 const MonthTableComponent = (props) => {
   // const { isDragging, drag } = useDraggable();
@@ -34,26 +37,40 @@ const MonthTableComponent = (props) => {
     const td_widgets = [];
     let i = 0;
     for (i = 0; i < colNum; i++) {
-      if (i === 0) {
-        td_widgets.push(
-          <td
+      td_widgets.push(
+        <td
+          style={{
+            position: "relative",
+            border: "1px solid " + color,
+            borderLeftWidth: 0,
+            borderBottom: 0,
+          }}
+        >
+          <div
             style={{
-              border: "1px solid " + color,
-              borderBottom: 0,
+              position: "absolute",
+              top: "0%",
+              left: "0%",
+              width: "20px",
+              height: "20px",
+              // border: "1px solid " + color,
+              borderBottom: "1px solid " + color,
             }}
-          ></td>
-        );
-      } else {
-        td_widgets.push(
-          <td
+          ></div>
+          {/* <div
             style={{
+              position: "absolute",
+              top: "0%",
+              left: "0%",
+              width: "20px",
+              height: "20px",
               border: "1px solid " + color,
-              borderLeftWidth: 0,
-              borderBottom: 0,
+              borderRadius: "50%",
+              // borderBottom: "1px solid " + color,
             }}
-          ></td>
-        );
-      }
+          ></div> */}
+        </td>
+      );
     }
 
     const total_widgets = [];
@@ -64,19 +81,7 @@ const MonthTableComponent = (props) => {
           style={{
             borderCollapse: "collapse",
             border: "1px solid " + color,
-            height: thisBlock.nameSpaceHeight + "px",
-            width: "100%",
-          }}
-        >
-          {td_widgets}
-        </tr>
-      );
-      total_widgets.push(
-        <tr
-          style={{
-            borderCollapse: "collapse",
-            border: "1px solid " + color,
-            height: thisBlock.contentHeight + "px",
+            height: thisBlock.height + "px",
             width: "100%",
           }}
         >
@@ -112,21 +117,21 @@ const MonthTableComponent = (props) => {
       </div>
       {isFocused && (
         <AdjustmentBar>
-          <AdjustButton action={incNameSpaceHeight} label="+" id={props.id} />
-          높이1
-          <AdjustButton action={decNameSpaceHeight} label="-" id={props.id} />
-          <AdjustButton action={incContentHeight} label="+" id={props.id} />
-          높이2
-          <AdjustButton action={decContentHeight} label="-" id={props.id} />
-          <AdjustButton action={incColor} label="+" id={props.id} />
-          색깔
-          <AdjustButton action={decColor} label="-" id={props.id} />
-          <AdjustButton action={incRow} label="+" id={props.id} />
-          가로
-          <AdjustButton action={decRow} label="-" id={props.id} />
-          <AdjustButton action={incCol} label="+" id={props.id} />
-          세로
-          <AdjustButton action={decCol} label="-" id={props.id} />
+          <IncDecGroup
+            inc={incHeight}
+            dec={decHeight}
+            label="높이"
+            id={props.id}
+          />
+          <IncDecGroup
+            inc={incColor}
+            dec={decColor}
+            label="색깔"
+            id={props.id}
+          />
+          <IncDecGroup inc={incRow} dec={decRow} label="가로" id={props.id} />
+          <IncDecGroup inc={incCol} dec={decCol} label="세로" id={props.id} />
+
           <AdjustButton action={deleteBlock} label="x" id={props.id} />
         </AdjustmentBar>
       )}

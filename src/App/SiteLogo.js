@@ -27,7 +27,7 @@ const SiteLogo = () => {
           style={{
             alignSelf: "center",
             justifySelf: "center",
-            border: "solid var(--diaryPage-color)",
+            border: "solid 1px var(--diaryPage-color)",
             position: "absolute",
             width: "400px",
             height: "50px",

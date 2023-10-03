@@ -24,7 +24,7 @@ body {
 
 .btn-normal {
   background-color: var(--sub1-color);
-  border: solid var(--diaryPage-color);
+  border: solid 1px var(--diaryPage-color);
   padding: 5px;
   font-family: "Noto Serif KR", serif;
 }
@@ -43,14 +43,14 @@ body {
 
 .btn-unselect {
   background-color: var(--diaryPage-color);
-  border: solid var(--diaryPage-color);
+  border: solid 1px var(--diaryPage-color);
   padding: 5px;
   font-family: "Noto Serif KR", serif;
 }
 
 .btn-normal:hover {
   /* background-color: var(--sub2-color); */
-  border: solid var(--diaryPage-color);
+  border: solid 1px var(--diaryPage-color);
   padding: 5px;
   font-family: "Noto Serif KR", serif;
 }

@@ -39,6 +39,7 @@ export const addGridBlock = (blockTypeStr) => {
     payload: {
       id: Date.now(),
       blockType: blockTypeStr,
+      lineHeight: 20,
       height: 60,
       color: 0.3,
     },
@@ -50,6 +51,7 @@ export const addDotGridBlock = (blockTypeStr) => {
     payload: {
       id: Date.now(),
       blockType: blockTypeStr,
+      lineHeight: 20,
       height: 60,
       color: 0.3,
     },
@@ -62,6 +64,7 @@ export const addRuledBlock = (blockTypeStr) => {
       id: Date.now(),
       blockType: blockTypeStr,
       height: 60,
+      lineHeight: 20,
       color: 0.3,
     },
   };
@@ -72,8 +75,7 @@ export const addMonthTableBlock = (blockTypeStr) => {
     payload: {
       id: Date.now(),
       blockType: blockTypeStr,
-      nameSpaceHeight: 20,
-      contentHeight: 40,
+      height: 80,
       rowNum: 5,
       colNum: 7,
       color: 0.3,
@@ -160,6 +162,25 @@ export const decHeight = (id) => {
     },
   };
 };
+
+export const incLineHeight = (id) => {
+  return {
+    type: "INCREASE_LINE_HEIGHT",
+    payload: {
+      id: id,
+    },
+  };
+};
+
+export const decLineHeight = (id) => {
+  return {
+    type: "DECREASE_LINE_HEIGHT",
+    payload: {
+      id: id,
+    },
+  };
+};
+
 export const incColor = (id) => {
   return {
     type: "INCREASE_COLOR",

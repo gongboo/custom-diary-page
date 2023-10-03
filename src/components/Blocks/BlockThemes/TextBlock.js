@@ -16,6 +16,7 @@ import {
   changeFont,
 } from "../../../ReduxFiles/actions";
 import { getColor } from "../common";
+import IncDecGroup from "../AdjustmentBar/IncDecGroup";
 
 const TextComponent = (props) => {
   // const { isDragging, drag } = useDraggable();
@@ -56,13 +57,19 @@ const TextComponent = (props) => {
       </div>{" "}
       {isFocused && (
         <AdjustmentBar>
+          <IncDecGroup
+            inc={incHeight}
+            dec={decHeight}
+            label="높이"
+            id={props.id}
+          />
+          <IncDecGroup
+            inc={incColor}
+            dec={decColor}
+            label="색깔"
+            id={props.id}
+          />
           {/* <AdjustInput action={changeFont} label="font" id={props.id} /> */}
-          <AdjustButton action={incHeight} label="+" id={props.id} />
-          높이
-          <AdjustButton action={decHeight} label="-" id={props.id} />
-          <AdjustButton action={incColor} label="+" id={props.id} />
-          색깔
-          <AdjustButton action={decColor} label="-" id={props.id} />
           <AdjustButton action={deleteBlock} label="x" id={props.id} />
         </AdjustmentBar>
       )}

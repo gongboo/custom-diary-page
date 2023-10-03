@@ -61,6 +61,25 @@ const blocksReducer = (state = blocks, action) => {
             }
           : block
       );
+    case "INCREASE_LINE_HEIGHT":
+      return state.map((block) =>
+        block.id === action.payload.id
+          ? {
+              ...block,
+              lineHeight: block.lineHeight + 1,
+            }
+          : block
+      );
+
+    case "DECREASE_LINE_HEIGHT":
+      return state.map((block) =>
+        block.id === action.payload.id
+          ? {
+              ...block,
+              lineHeight: block.lineHeight - 1,
+            }
+          : block
+      );
     case "INCREASE_ROWNUM":
       return state.map((block) =>
         block.id === action.payload.id

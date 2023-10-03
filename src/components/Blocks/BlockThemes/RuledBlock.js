@@ -17,9 +17,12 @@ import {
   incColor,
   decColor,
   deleteBlock,
+  incLineHeight,
+  decLineHeight,
 } from "../../../ReduxFiles/actions";
 import { getColor } from "../common";
 import styles from "../styles/Block.module.css";
+import IncDecGroup from "../AdjustmentBar/IncDecGroup";
 
 const RuledComponent = (props) => {
   // const { isDragging, drag } = useDraggable();
@@ -43,17 +46,30 @@ const RuledComponent = (props) => {
           height: thisBlock.height + "px",
           backgroundImage:
             "linear-gradient(" + color + " 1px, transparent 1px)",
-          backgroundSize: "20px 20px",
+          backgroundSize: "10px " + thisBlock.lineHeight + "px",
+          // backgroundSize: "10px 30px",
         }}
       >
         {isFocused && (
           <AdjustmentBar>
-            <AdjustButton action={incHeight} label="+" id={props.id} />
-            높이
-            <AdjustButton action={decHeight} label="-" id={props.id} />
-            <AdjustButton action={incColor} label="+" id={props.id} />
-            색깔
-            <AdjustButton action={decColor} label="-" id={props.id} />
+            <IncDecGroup
+              inc={incHeight}
+              dec={decHeight}
+              label="높이"
+              id={props.id}
+            />
+            <IncDecGroup
+              inc={incLineHeight}
+              dec={decLineHeight}
+              label="줄간격"
+              id={props.id}
+            />
+            <IncDecGroup
+              inc={incColor}
+              dec={decColor}
+              label="색깔"
+              id={props.id}
+            />
             <AdjustButton action={deleteBlock} label="x" id={props.id} />
           </AdjustmentBar>
         )}

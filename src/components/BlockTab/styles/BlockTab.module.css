@@ -1,7 +1,7 @@
 .component_blocks {
   float: left;
   margin: 5px;
-  border: solid var(--diaryPage-color);
+  border: solid 1px var(--diaryPage-color);
   padding: 10px;
   background-color: var(--main-color);
 }
@@ -11,7 +11,7 @@
   height: 150px;
   background-color: var(--sub1-color);
 
-  border: solid var(--diaryPage-color);
+  border: solid 1px var(--diaryPage-color);
   box-sizing: border-box;
   padding: 5px;
   overflow: hidden;

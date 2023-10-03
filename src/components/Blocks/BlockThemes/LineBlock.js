@@ -16,6 +16,7 @@ import {
 import AdjustButton from "../AdjustmentBar/AdjustButton";
 import { getColor } from "../common";
 import styles from "../styles/Block.module.css";
+import IncDecGroup from "../AdjustmentBar/IncDecGroup";
 
 const LineComponent = (props) => {
   const { isDragging, drag } = useDraggable();
@@ -42,12 +43,19 @@ const LineComponent = (props) => {
       ></div>
       {isFocused && (
         <AdjustmentBar onDelete={props.onDelete} id={props.id}>
-          <AdjustButton action={incHeight} label="+" id={props.id} />
-          높이
-          <AdjustButton action={decHeight} label="-" id={props.id} />
-          <AdjustButton action={incColor} label="+" id={props.id} />
-          색깔
-          <AdjustButton action={decColor} label="-" id={props.id} />
+          <IncDecGroup
+            inc={incHeight}
+            dec={decHeight}
+            label="높이"
+            id={props.id}
+          />
+
+          <IncDecGroup
+            inc={incColor}
+            dec={decColor}
+            label="색깔"
+            id={props.id}
+          />
           <AdjustButton
             action={deleteBlock}
             label="x"

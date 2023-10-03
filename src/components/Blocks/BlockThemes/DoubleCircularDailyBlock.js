@@ -14,6 +14,7 @@ import {
 } from "../../../ReduxFiles/actions";
 import { getColor } from "../common";
 import styles from "../styles/Block.module.css";
+import IncDecGroup from "../AdjustmentBar/IncDecGroup";
 
 const DoubleCircularDailyComponent = (props) => {
   const [isFocused, setIsFocused, handleBlur] = useFocus();
@@ -115,12 +116,19 @@ const DoubleCircularDailyComponent = (props) => {
       </div>{" "}
       {isFocused && (
         <AdjustmentBar onDelete={props.onDelete} id={props.id}>
-          <AdjustButton action={incHeight} label="+" id={props.id} />
-          높이
-          <AdjustButton action={decHeight} label="-" id={props.id} />
-          <AdjustButton action={incColor} label="+" id={props.id} />
-          색깔
-          <AdjustButton action={decColor} label="-" id={props.id} />
+          <IncDecGroup
+            inc={incHeight}
+            dec={decHeight}
+            label="높이"
+            id={props.id}
+          />
+
+          <IncDecGroup
+            inc={incColor}
+            dec={decColor}
+            label="색깔"
+            id={props.id}
+          />
           <AdjustButton action={deleteBlock} label="x" id={props.id} />
         </AdjustmentBar>
       )}
