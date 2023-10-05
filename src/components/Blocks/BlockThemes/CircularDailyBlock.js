@@ -15,6 +15,7 @@ import {
 import { getColor } from "../common";
 import styles from "../styles/Block.module.css";
 import IncDecGroup from "../AdjustmentBar/IncDecGroup";
+import StyleGroup from "../AdjustmentBar/StyleGroup";
 
 const CircularDailyComponent = (props) => {
   const [isFocused, setIsFocused, handleBlur] = useFocus();

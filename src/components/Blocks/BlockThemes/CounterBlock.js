@@ -16,6 +16,7 @@ import {
 } from "../../../ReduxFiles/actions";
 import { getColor } from "../common";
 import IncDecGroup from "../AdjustmentBar/IncDecGroup";
+import StyleGroup from "../AdjustmentBar/StyleGroup";
 
 const CounterComponent = (props) => {
   const [isFocused, setIsFocused, handleBlur] = useFocus();
@@ -24,71 +25,70 @@ const CounterComponent = (props) => {
     state.find((block) => block.id === props.id)
   );
   const color = getColor(thisBlock.color);
-  let styleNum = thisBlock.style;
-  console.log(styleNum);
+
+  const SquareStyle = (props) => {
+    return (
+      <div
+        style={{
+          border: "solid 1px " + color,
+          width: "8%",
+          aspectRatio: "1 / 1",
+          color: color,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        {props.num}
+      </div>
+    );
+  };
+  const CircleStyle = (props) => {
+    return (
+      <div
+        style={{
+          border: "solid 1px " + color,
+          width: "8%",
+          aspectRatio: "1 / 1",
+          color: color,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          borderRadius: "100%",
+        }}
+      >
+        {props.num}
+      </div>
+    );
+  };
+  const RoundSquareStyle = (props) => {
+    return (
+      <div
+        style={{
+          border: "solid 1px " + color,
+          width: "8%",
+          aspectRatio: "1 / 1",
+          color: color,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          borderRadius: "10%",
+        }}
+      >
+        {props.num}
+      </div>
+    );
+  };
+
+  const styleMap = {
+    0: SquareStyle,
+    1: CircleStyle,
+    2: RoundSquareStyle,
+  };
+
   const oneParticle = (num) => {
-    if (thisBlock.style === 0) {
-      return (
-        <div
-          style={{
-            border: "solid 1px " + color,
-            // padding: "5px",
-            // width: "20px",
-            // height: "20px",
-            // padding: "5px",
-            width: "8%",
-            aspectRatio: "1 / 1",
-            color: color,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          {num}
-        </div>
-      );
-    } else if (thisBlock.style === 1) {
-      return (
-        <div
-          style={{
-            border: "solid 1px " + color,
-            // padding: "5px",
-            // width: "20px",
-            // height: "20px",
-            // padding: "5px",
-            width: "8%",
-            aspectRatio: "1 / 1",
-            color: color,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            borderRadius: "100%",
-          }}
-        >
-          {num}
-        </div>
-      );
-    } else if (thisBlock.style === 2) {
-      return (
-        <div
-          style={{
-            border: "solid 1px " + color,
-            // padding: "5px",
-            width: "8%",
-            aspectRatio: "1 / 1",
-            // width: "20px",
-            // height: "20px",
-            color: color,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            borderRadius: "10%",
-          }}
-        >
-          {num}
-        </div>
-      );
-    }
+    const Pariticle = styleMap[thisBlock.style];
+    return <Pariticle num={num} />;
   };
 
   return (
@@ -110,9 +110,12 @@ const CounterComponent = (props) => {
       </div>
       {isFocused && (
         <AdjustmentBar onDelete={props.onDelete} id={props.id}>
-          <AdjustButton action={incStyleNum} label="<" id={props.id} />
-          스타일
-          <AdjustButton action={decStyleNum} label=">" id={props.id} />
+          <StyleGroup
+            inc={incStyleNum}
+            dec={decStyleNum}
+            label="스타일"
+            id={props.id}
+          />
           <IncDecGroup
             inc={incCounter}
             dec={decCounter}

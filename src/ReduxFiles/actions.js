@@ -4,7 +4,7 @@ export const addSquareBlock = (blockTypeStr) => {
     payload: {
       id: Date.now(),
       blockType: blockTypeStr,
-      height: 10,
+      height: 120,
       color: 0.3,
       isRound: false,
     },
@@ -39,7 +39,7 @@ export const addGridBlock = (blockTypeStr) => {
     payload: {
       id: Date.now(),
       blockType: blockTypeStr,
-      lineHeight: 20,
+      lineHeight: 21,
       height: 60,
       color: 0.3,
     },
@@ -79,6 +79,8 @@ export const addMonthTableBlock = (blockTypeStr) => {
       rowNum: 5,
       colNum: 7,
       color: 0.3,
+      style: 0,
+      totalNumStyle: 3,
     },
   };
 };
@@ -104,6 +106,8 @@ export const addChecklistBlock = (blockTypeStr) => {
       height: 10,
       color: 0.3,
       numChecklist: 3,
+      style: 0,
+      totalNumStyle: 3,
     },
   };
 };

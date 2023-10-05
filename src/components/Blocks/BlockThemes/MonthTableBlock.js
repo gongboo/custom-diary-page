@@ -15,6 +15,8 @@ import {
   decCol,
   incHeight,
   decHeight,
+  incStyleNum,
+  decStyleNum,
   incNameSpaceHeight,
   decNameSpaceHeight,
   incContentHeight,
@@ -23,6 +25,7 @@ import {
 import { getColor } from "../common";
 import styles from "../styles/Block.module.css";
 import IncDecGroup from "../AdjustmentBar/IncDecGroup";
+import StyleGroup from "../AdjustmentBar/StyleGroup";
 
 const MonthTableComponent = (props) => {
   // const { isDragging, drag } = useDraggable();
@@ -33,7 +36,62 @@ const MonthTableComponent = (props) => {
   );
   const color = getColor(thisBlock.color);
 
+  const UnderLineStyle = () => {
+    return (
+      <div
+        style={{
+          position: "absolute",
+          top: "0%",
+          left: "0%",
+          width: "20px",
+          height: "20px",
+          // border: "1px solid " + color,
+          borderBottom: "1px solid " + color,
+        }}
+      ></div>
+    );
+  };
+  const CircleStyle = () => {
+    return (
+      <div
+        style={{
+          position: "absolute",
+          top: "0%",
+          left: "0%",
+          width: "20px",
+          height: "20px",
+          border: "1px solid " + color,
+          borderRadius: "50%",
+          // borderBottom: "1px solid " + color,
+        }}
+      ></div>
+    );
+  };
+  const SquareStyle = () => {
+    return (
+      <div
+        style={{
+          position: "absolute",
+          top: "0%",
+          left: "0%",
+          width: "20px",
+          height: "20px",
+          border: "1px solid " + color,
+          // borderRadius: "50%",
+          // borderBottom: "1px solid " + color,
+        }}
+      ></div>
+    );
+  };
+  const styleMap = {
+    0: UnderLineStyle,
+    1: CircleStyle,
+    2: SquareStyle,
+  };
+
   const drawTable = (rowNum, colNum) => {
+    const StylePart = styleMap[thisBlock.style];
+
     const td_widgets = [];
     let i = 0;
     for (i = 0; i < colNum; i++) {
@@ -46,7 +104,8 @@ const MonthTableComponent = (props) => {
             borderBottom: 0,
           }}
         >
-          <div
+          <StylePart />
+          {/* <div
             style={{
               position: "absolute",
               top: "0%",
@@ -56,7 +115,7 @@ const MonthTableComponent = (props) => {
               // border: "1px solid " + color,
               borderBottom: "1px solid " + color,
             }}
-          ></div>
+          ></div> */}
           {/* <div
             style={{
               position: "absolute",
@@ -117,6 +176,12 @@ const MonthTableComponent = (props) => {
       </div>
       {isFocused && (
         <AdjustmentBar>
+          <StyleGroup
+            inc={incStyleNum}
+            dec={decStyleNum}
+            label="스타일"
+            id={props.id}
+          />
           <IncDecGroup
             inc={incHeight}
             dec={decHeight}
@@ -131,7 +196,6 @@ const MonthTableComponent = (props) => {
           />
           <IncDecGroup inc={incRow} dec={decRow} label="가로" id={props.id} />
           <IncDecGroup inc={incCol} dec={decCol} label="세로" id={props.id} />
-
           <AdjustButton action={deleteBlock} label="x" id={props.id} />
         </AdjustmentBar>
       )}

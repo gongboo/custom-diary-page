@@ -11,10 +11,13 @@ import {
   incChecklist,
   decChecklist,
   deleteBlock,
+  incStyleNum,
+  decStyleNum,
 } from "../../../ReduxFiles/actions";
 import { getColor } from "../common";
 import styles from "../styles/Block.module.css";
 import IncDecGroup from "../AdjustmentBar/IncDecGroup";
+import StyleGroup from "../AdjustmentBar/StyleGroup";
 
 const ChecklistComponent = (props) => {
   // const { isDragging, drag } = useDraggable();
@@ -27,6 +30,68 @@ const ChecklistComponent = (props) => {
     state.find((block) => block.id === props.id)
   );
   const color = getColor(thisBlock.color);
+
+  const UnderLineStyle = () => {
+    return (
+      <div style={{ display: "flex" }}>
+        <div
+          style={{
+            height: "10px",
+            width: "3px",
+            marginTop: "5px",
+            marginBottom: "5px",
+            marginLeft: "5px",
+            marginRight: "4px",
+            borderTop: "1px solid " + color,
+            borderBottom: "1px solid " + color,
+            borderLeft: "1px solid " + color,
+          }}
+        ></div>
+        <div
+          style={{
+            height: "10px",
+            width: "3px",
+            marginTop: "5px",
+            marginBottom: "5px",
+            marginRight: "5px",
+            borderTop: "1px solid " + color,
+            borderBottom: "1px solid " + color,
+            borderRight: "1px solid " + color,
+          }}
+        ></div>
+      </div>
+    );
+  };
+  const CircleStyle = () => {
+    return (
+      <div
+        style={{
+          height: "10px",
+          width: "10px",
+          margin: "5px",
+          border: "1px solid " + color,
+          borderRadius: "50%",
+        }}
+      ></div>
+    );
+  };
+  const SquareStyle = () => {
+    return (
+      <div
+        style={{
+          height: "10px",
+          width: "10px",
+          margin: "5px",
+          border: "1px solid " + color,
+        }}
+      ></div>
+    );
+  };
+  const styleMap = {
+    0: UnderLineStyle,
+    1: CircleStyle,
+    2: SquareStyle,
+  };
   return (
     <DiaryComponent
       // drag={drag}
@@ -37,6 +102,12 @@ const ChecklistComponent = (props) => {
 
       {isFocused && (
         <AdjustmentBar>
+          <StyleGroup
+            inc={incStyleNum}
+            dec={decStyleNum}
+            label="스타일"
+            id={props.id}
+          />
           <IncDecGroup
             inc={incChecklist}
             dec={decChecklist}
@@ -59,9 +130,12 @@ const ChecklistComponent = (props) => {
   function oneCheckList(num) {
     let i = 0;
     const widgets = [];
+    const StylePart = styleMap[thisBlock.style];
     for (i = 0; i < num; i++) {
       widgets.push(
         <div style={{ flexDirection: "row" }}>
+          <StylePart />
+          {/* 
           <div
             style={{
               height: "10px",
@@ -69,7 +143,7 @@ const ChecklistComponent = (props) => {
               margin: "5px",
               border: "1px solid " + color,
             }}
-          ></div>
+          ></div> */}
           <div
             style={{
               height: "1px",
