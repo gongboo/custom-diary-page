@@ -14,12 +14,13 @@ function App() {
   const componentRef = useRef();
   const samplePrintRef = useRef();
 
-  const [padding, setPadding] = useState(19);
+  const [padding, setPadding] = useState(25);
   const [holeSpace, setHoleSpace] = useState(0);
   const [isModalActive, setIsModalActive] = useState(false);
   const [printPageStyle, setPrintPageStyle] = useState("1x1");
   const [imageUrl, setImageUrl] = useState(null);
   const [imageUrl90, setImageUrl90] = useState(null);
+  const [isCutHelperDotActive, setCutHelperDotActive] = useState(false);
 
   const changePad = (num) => {
     setPadding(num);
@@ -208,7 +209,38 @@ function App() {
                 />
               )}
               {printPageStyle === "2x1" && (
-                <div>
+                <div
+                  style={{
+                    position: "relative",
+                    overflow: "clip",
+                  }}
+                >
+                  {isCutHelperDotActive === true && (
+                    <>
+                      <div
+                        style={{
+                          position: "absolute",
+                          width: "10%",
+                          height: "1px",
+                          backgroundColor: "#c9c9c9",
+                          top: "50%",
+                          left: "0%",
+                          transform: "translate(-50%, -50%)",
+                        }}
+                      ></div>
+                      <div
+                        style={{
+                          position: "absolute",
+                          width: "10%",
+                          height: "1px",
+                          backgroundColor: "#c9c9c9",
+                          top: "50%",
+                          left: "100%",
+                          transform: "translate(-50%, -50%)",
+                        }}
+                      ></div>
+                    </>
+                  )}
                   <img
                     src={imageUrl90}
                     style={{
@@ -234,8 +266,61 @@ function App() {
               {printPageStyle === "2x2" && (
                 <>
                   <div
-                    style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}
+                    style={{
+                      display: "grid",
+                      gridTemplateColumns: "1fr 1fr",
+                      position: "relative",
+                      overflow: "clip",
+                    }}
                   >
+                    {isCutHelperDotActive === true && (
+                      <>
+                        <div
+                          style={{
+                            position: "absolute",
+                            width: "10%",
+                            height: "1px",
+                            backgroundColor: "#c9c9c9",
+                            top: "50%",
+                            left: "0%",
+                            transform: "translate(-50%, -50%)",
+                          }}
+                        ></div>
+                        <div
+                          style={{
+                            position: "absolute",
+                            width: "1px",
+                            height: "5%",
+                            backgroundColor: "#c9c9c9",
+                            top: "0%",
+                            left: "50%",
+                            transform: "translate(-50%, -50%)",
+                          }}
+                        ></div>
+                        <div
+                          style={{
+                            position: "absolute",
+                            width: "1px",
+                            height: "5%",
+                            backgroundColor: "#c9c9c9",
+                            top: "100%",
+                            left: "50%",
+                            transform: "translate(-50%, -50%)",
+                          }}
+                        ></div>
+                        <div
+                          style={{
+                            position: "absolute",
+                            width: "10%",
+                            height: "1px",
+                            backgroundColor: "#c9c9c9",
+                            top: "50%",
+                            left: "100%",
+                            transform: "translate(-50%, -50%)",
+                          }}
+                        ></div>
+                      </>
+                    )}
                     <img
                       src={imageUrl}
                       style={{ width: "100%", display: "block", margin: 0 }}
@@ -310,6 +395,17 @@ function App() {
                   onChange={(e) => setPrintPageStyle(e.target.value)}
                 />
                 <label for="2x2">2x2</label>
+              </div>
+              <div>
+                <label>
+                  <input
+                    type="checkbox"
+                    name="isCutHelperDotActive"
+                    checked={isCutHelperDotActive}
+                    onChange={(e) => setCutHelperDotActive(e.target.checked)}
+                  />
+                  자르는 위치를 점으로 표시
+                </label>
               </div>
               <PrintButton contentRef={samplePrintRef} />
             </div>
