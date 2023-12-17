@@ -16,6 +16,7 @@ import {
   addMonthTableBlock,
   addPictureDiaryBlock,
   addCounterBlock,
+  addShapeBlock,
 } from "../../ReduxFiles/actions";
 
 import LineComponent from "../Blocks/BlockThemes/LineBlock";
@@ -31,6 +32,8 @@ import MonthTableComponent from "../Blocks/BlockThemes/MonthTableBlock";
 import PictureDailyComponent from "../Blocks/BlockThemes/PictureDailyBlock";
 // import ProgressComponent from "../Blocks/progressComponent";
 import CounterComponent from "../Blocks/BlockThemes/CounterBlock";
+import ShapesComponent from "../Blocks/BlockThemes/ShapesBlocks";
+
 import { v4 as uuidv4 } from "uuid";
 
 const DiaryPage = React.forwardRef((props, ref) => {
@@ -87,6 +90,9 @@ const DiaryPage = React.forwardRef((props, ref) => {
       counter: () => {
         dispatch(addCounterBlock(item.name));
       },
+      shapes: () => {
+        dispatch(addShapeBlock(item.name));
+      },
     };
     const temp = componentMap[item.name];
 
@@ -110,6 +116,7 @@ const DiaryPage = React.forwardRef((props, ref) => {
       pictureDiary: () => <PictureDailyComponent id={id} />,
       // progressBar: <ProgressComponent id={id} />,
       counter: () => <CounterComponent id={id} />,
+      shapes: () => <ShapesComponent id={id} />,
     };
 
     const createComponent = componentMap[str];

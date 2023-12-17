@@ -143,7 +143,15 @@ function RuledCreator() {
     </div>
   );
 }
+function ShapesCreator() {
+  const { isDragging, drag } = useDraggable("shapes");
 
+  return (
+    <div ref={drag} className={styles.component_blocks}>
+      <div>shapes</div>
+    </div>
+  );
+}
 function ComponentTab(props) {
   const [tabState, setTabState] = useState("tab1");
 
@@ -163,6 +171,7 @@ function ComponentTab(props) {
         <CounterCreator />
         <CircularDailyCreator />
         <DoubleCircularDailyCreator />
+        <ShapesCreator />
       </div>
     ),
     tab2: <div>준비중...</div>,
@@ -180,15 +189,7 @@ function ComponentTab(props) {
             />
             top
           </label>
-          {/* <label>
-            <input
-              type="radio"
-              value="down"
-              checked={props.holeDirection === "down"}
-              onChange={props.changeHoleDirection}
-            />
-            down
-          </label> */}
+
           <label>
             <input
               type="radio"

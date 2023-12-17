@@ -38,6 +38,8 @@ const blocksReducer = (state = blocks, action) => {
       return [...state, action.payload];
     case "DOUBLECIRCULARDAILY/CREATE":
       return [...state, action.payload];
+    case "SHAPES/CREATE":
+      return [...state, action.payload];
 
     case "BLOCK_DELETE":
       return state.filter((block) => block.id !== action.payload.id);

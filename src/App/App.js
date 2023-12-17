@@ -55,8 +55,8 @@ function App() {
     const scale = 4;
     domtoimage
       .toPng(node, {
-        width: 500 * scale,
-        height: 707 * scale,
+        width: 496 * scale,
+        height: 701.6 * scale,
         style: {
           transform: "scale(" + scale + ")",
           transformOrigin: "top left",
@@ -199,7 +199,11 @@ function App() {
             <div
               id="sample"
               ref={samplePrintRef}
-              // style={{ margin: 0, padding: 0, width: "100%" }}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
             >
               {printPageStyle === "1x1" && (
                 <img

@@ -148,6 +148,20 @@ export const addDoubleCircularDailyBlock = (blockTypeStr) => {
     },
   };
 };
+
+export const addShapeBlock = (blockTypeStr) => {
+  return {
+    type: "SHAPES/CREATE",
+    payload: {
+      id: Date.now(),
+      blockType: blockTypeStr,
+      totalNumStyle: 11,
+      style: 0,
+      height: 50,
+      color: 0.3,
+    },
+  };
+};
 //------------------------------
 export const incHeight = (id) => {
   return {
